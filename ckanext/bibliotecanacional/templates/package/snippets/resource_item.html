@@ -1,0 +1,22 @@
+{% ckan_extends %}
+
+{% set geo_formats = [ 'csv', 'json', 'geojson', 'kml', 'kmz', 'shp', 'dwg', 'fgdb', 'sid', 'tiff', 'geotiff', 'tif', 'geotif'] %}
+{% set odata_formats = [ 'csv', 'xls', 'xlsx' ] %}
+
+  
+  {% block resource_item_title %}
+	 <div>  
+	  <a href="{{ url }}" title="{{ res.name or res.description }}">
+		<span class="heading" style="display:inline">
+			{{ h.resource_display_name(res) | truncate(50) }}
+		</span>
+	  </a>
+	  
+		
+		<span class="format-label" property="dc:format" data-format="{{ res.format.lower() or 'data' }}">{{ res.format }}</span>
+		
+		{{ h.popular('views', res.tracking_summary.total, min=10) }}
+	  
+  </div>
+	  
+  {% endblock %}

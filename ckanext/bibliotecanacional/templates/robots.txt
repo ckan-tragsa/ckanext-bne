@@ -1,0 +1,48 @@
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+Crawl-Delay: 30
+Disallow: /dataset/rate/
+Disallow: /revision/
+Disallow: /dataset/*/history
+Disallow: /datastore/
+Disallow: /api/
+
+User-agent: Slurp
+Crawl-Delay: 30
+Disallow: /dataset/rate/
+Disallow: /revision/
+Disallow: /dataset/*/history
+Disallow: /datastore/
+Disallow: /api/
+
+User-Agent: msnbot
+Crawl-Delay: 30
+Disallow: /dataset/rate/
+Disallow: /revision/
+Disallow: /dataset/*/history
+Disallow: /datastore/
+Disallow: /api/
+
+User-Agent: msnbot-media
+Crawl-Delay: 30
+Disallow: /dataset/rate/
+Disallow: /revision/
+Disallow: /dataset/*/history
+Disallow: /datastore/
+Disallow: /api/
+
+User-Agent: bingbot
+Crawl-Delay: 30
+Disallow: /dataset/rate/
+Disallow: /revision/
+Disallow: /dataset/*/history
+Disallow: /datastore/
+Disallow: /api/
+
+User-agent: Linguee
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /

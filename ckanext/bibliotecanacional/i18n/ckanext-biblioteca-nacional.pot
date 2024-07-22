@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+
+msgid "Popular datasets"
+msgstr ""
+
+msgid "Popular dataset"
+msgstr ""
+
+msgid "Most viewed in the last 14 days"
+msgstr ""
+
+msgid "hit"
+msgstr ""
+
+msgid "hits"
+msgstr ""
+
+msgid "Recently updated"
+msgstr ""
+
+msgid "Datasets recently modified"
+msgstr ""
+
+msgid "Updated on "
+msgstr ""
+
+msgid "In the News"
+msgstr ""
+
+msgid "News Аrchive"
+msgstr ""

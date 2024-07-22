@@ -1,5 +1,4 @@
 include README.rst
 include LICENSE
 include requirements.txt
-recursive-include ckanext/bne *.html *.json *.js *.less *.css *.mo *.yml
-recursive-include ckanext/bne/migration *.ini *.py *.mako
+recursive-include ckanext/bibliotecanacional *.html *.json *.js *.less *.css *.mo

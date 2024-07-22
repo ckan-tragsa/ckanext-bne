@@ -1,0 +1,105 @@
+{% set test_lang = request.environ.CKAN_LANG %}
+{% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
+<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="container">
+    {% block footer_content %}
+		<div>
+			<ul id="menu-footer-menu-es-bnelab" class="footer-links-menu">
+			   {% if test_lang == "es" %}
+					<li><b><u>DATOS ABIERTOS</u></b></li>
+					<li id="menu-item-1">
+						<a href="/pages/que-son">¿Qué son?</a>
+					</li>
+					<li id="menu-item-2">
+						<a href="/pages/info-plataforma-ckan">Información plataforma</a>
+					</li>
+					<li id="menu-item-3">
+						<a href="/pages/api">{{ _('CKAN API') }}</a>
+					</li>
+				{% else %}
+					<li><b><u>OPEN DATA</u></b></li>
+					<li id="menu-item-1">
+						<a href="/pages/que-son">Overview</a>
+					</li>
+					<li id="menu-item-2">
+						<a href="/pages/info-plataforma-ckan">Web information</a>
+					</li>
+					<li id="menu-item-3">
+						<a href="/pages/api">{{ _('CKAN API') }}</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>		
+	
+		<aside  class="widget widget_media_image">
+			<a href="http://www.bne.es/">
+				<img class="img_bne" alt="logo bne">
+			</a>
+		</aside>
+		<aside  class="widget widget_media_image">
+			<a href="http://www.mineco.gob.es/">
+				<img class="img_min" alt="logo ministerio">
+			</a>
+		</aside>
+		<aside  class="widget widget_media_image">
+			<a href="https://planderecuperacion.gob.es/">
+				<img class="img_recu" alt="logo plan recuperacion">
+			</a>
+		</aside>
+		<aside  class="widget widget_media_image">
+			<a href="https://next-generation-eu.europa.eu/index_es">
+				<img class="img_next" alt="logo next">
+			</a>
+		</aside>
+		<aside  class="widget widget_media_image">
+			<a href="https://www.red.es/es">
+				<img class="img_red" alt="logo red.es">
+			</a>
+		</aside>
+		
+		<div>
+			<ul id="menu-footer-menu-es-bnelab" class="footer-links-menu">
+			   {% if test_lang == "es" %}
+					<li id="menu-item-825">
+						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/avisoLegal/">Aviso legal</a>
+					</li>
+					<li id="menu-item-826">
+						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Protecciondedatos/">Protección de datos</a>
+					</li>
+					<li id="menu-item-827">
+						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Cookies/">Política de cookies</a>
+					</li>
+					<li id="menu-item-477">
+						<a title="Contacta con BNElab" href="mailto:bnelab@bne.es">bnelab@bne.es</a>
+					</li>
+				{% else %}
+					<li id="menu-item-825">
+						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/avisoLegal/">Legal notice</a>
+					</li>
+					<li id="menu-item-826">
+						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Protecciondedatos/">Data protection</a>
+					</li>
+					<li id="menu-item-827">
+						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Cookies/">Cookie polic</a>
+					</li>
+					<li id="menu-item-477">
+						<a title="Contacta con BNElab" href="mailto:bnelab@bne.es">bnelab@bne.es</a>
+					</li>
+				{% endif %}
+			</ul>
+		</div>	
+
+<!-- 		<div class="col-lg-12 alineado">	
+			<p class="p-small statement">Financiado por la Unión Europea - NextGenerationEU</p>
+			<img class="img-logo" src="/base/images/logo PRTR.png" alt="alternative">
+			<img class="img-logo" src="/base/images/logo_fundedbyEU.png" alt="alternative">
+		</div> -->
+	{% endblock %}
+	</div>		
+
+  {% block footer_debug %}
+    {% if g.debug %}
+      {% include 'snippets/debug.html' %}
+    {% endif %}
+  {% endblock %}
+</footer>
