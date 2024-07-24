@@ -1,0 +1,57 @@
+msgid ""
+msgstr ""
+
+msgid "Popular datasets"
+msgstr ""
+
+msgid "Popular dataset"
+msgstr ""
+
+msgid "Most viewed in the last 14 days"
+msgstr ""
+
+msgid "hit"
+msgstr ""
+
+msgid "hits"
+msgstr ""
+
+msgid "Recently updated"
+msgstr ""
+
+msgid "Datasets recently modified"
+msgstr ""
+
+msgid "Updated on "
+msgstr ""
+
+msgid "In the News"
+msgstr ""
+
+msgid "News Аrchive"
+msgstr ""
+
+# ckanext-contact
+msgid "Contact"
+msgstr ""
+
+msgid "Contact us"
+msgstr ""
+
+msgid "Contact Name"
+msgstr ""
+
+msgid "Your Request"
+msgstr ""
+
+msgid "What do you have to tell us?"
+msgstr ""
+
+msgid "Questions? Comments? We are always glad to hear from you!"
+msgstr ""
+
+msgid "I give my consent to the processing of my personal data by the Biblioteca Nacional de España in order to carry out the requested operation. In the event of refusal to process your data, the procedure cannot be carried out."
+msgstr ""
+
+msgid "I have read and agree to the privacy policy."
+msgstr ""

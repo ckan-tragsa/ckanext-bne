@@ -1,0 +1,15 @@
+{% ckan_extends %}
+
+{% block contact_link %}
+    <li>
+      <a href="{{ h.url_for('contact.form') }}" title="{{ _('Contact') }}">
+        {% if c.userobj %}
+          <i class="fa fa-envelope"></i>
+        {% else %}
+           {{ _('Contact') }}
+        {% endif %}
+      </a>
+    </li>
+{% endblock %}
+
+

@@ -7,8 +7,8 @@
 #     preload:
 #       - base/main
 
-# bne-css:
-#   filter: cssrewrite
-#   output: ckanext-bne/%(version)s-bne.css
-#   contents:
-#     - css/bne.css
+ bne-css:
+   filter: cssrewrite
+   output: ckanext-bne/%(version)s-bne.css
+   contents:
+     - css/bne.css

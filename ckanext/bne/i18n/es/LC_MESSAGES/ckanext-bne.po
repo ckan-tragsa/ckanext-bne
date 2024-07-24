@@ -1,0 +1,70 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-04-25 11:43+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+msgid "Popular datasets"
+msgstr "Conjuntos de datos más populares"
+
+msgid "Popular dataset"
+msgstr "Conjunto de datos popular"
+
+msgid "Most viewed in the last 14 days"
+msgstr "Los más vistos en los últimos 14 días"
+
+msgid "hit"
+msgstr "visita"
+
+msgid "hits"
+msgstr "visitas"
+
+msgid "Recently updated"
+msgstr "Últimas actualizaciones"
+
+msgid "Datasets recently modified"
+msgstr "Conjuntos de datos modificados recientemente"
+
+msgid "Updated on "
+msgstr "Actualizado el día "
+
+msgid "In the News"
+msgstr "Blog"
+
+msgid "News Аrchive"
+msgstr "Archivo"
+
+# ckanext-contact
+msgid "Contact"
+msgstr "Contacto"
+
+msgid "Contact us"
+msgstr "Contáctenos"
+
+msgid "Contact Name"
+msgstr "Nombre de contacto"
+
+msgid "Your Request"
+msgstr "Petición y consultas"
+
+msgid "What do you have to tell us?"
+msgstr "¿Qué tiene que contarnos?"
+
+msgid "Questions? Comments? We are always glad to hear from you!"
+msgstr "¿Preguntas? ¿Comentarios? Estaremos encantados de recibir sus comentarios."
+
+msgid "I give my consent to the processing of my personal data by the Biblioteca Nacional de España in order to carry out the requested operation. In the event of refusal to process your data, the procedure cannot be carried out."
+msgstr "Doy mi consentimiento para que los datos personales que facilito puedan ser utilizados por la Biblioteca Nacional de España, para poder realizar el trámite solicitado. En caso de negativa al tratamiento de sus datos no podrá prestarse el trámite."
+
+msgid "I have read and agree to the privacy policy."
+msgstr "He leído y acepto la Política de protección de datos."
