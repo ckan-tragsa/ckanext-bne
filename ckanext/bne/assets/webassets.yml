@@ -12,3 +12,4 @@
    output: ckanext-bne/%(version)s-bne.css
    contents:
      - css/bne.css
+

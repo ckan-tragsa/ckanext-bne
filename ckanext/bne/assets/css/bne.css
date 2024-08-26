@@ -80,3 +80,93 @@ body {
     font-size: 3em;
     font-weight: 500;
 }
+
+/*--------------------------------------------------------------------------------------*/
+
+.img_bne {
+    width: auto;
+    height: 55px;
+    display: block;
+    margin: 0px auto;
+    content: url(http://bnelab.bne.es/wp-content/uploads/2018/06/logo-bne-optimizado.svg);
+}
+
+.img_min {
+    width: auto;
+    height: 50px;
+    display: block;
+    margin: 0px auto;
+    content: url(https://bnelab.bne.es/wp-content/uploads/2024/07/gob_mc_bne-6.png);
+}
+
+.img_recu {
+    width: auto;
+    height: 110px;
+    display: block;
+    margin: 0px auto;
+    content: url(https://bnelab.bne.es/wp-content/uploads/2024/07/prtr2.png);
+}
+
+.img_next {
+    width: auto;
+    height: 50px;
+    display: block;
+    margin: 0px auto;
+    content: url(https://bnelab.bne.es/wp-content/uploads/2024/07/ue_next.png);
+}
+
+.img_red {
+    width: auto;
+    height: 40px;
+    display: block;
+    margin: 0px auto;
+    content: url(https://bnelab.bne.es/wp-content/uploads/2024/07/redes_blanco.png);
+}
+
+.site-footer {
+    padding: 2em 0 2em;
+    background-color: #122037;
+    color: #d0d0d4;
+    text-align: center;
+    float: inline-start;
+    width: 100%;
+}
+
+.site-footer a {
+    display: inline-block;
+    color: #b9b9bf;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+aside{
+    display: inline-block;
+    vertical-align: middle;
+    margin-inline: 1rem;
+}
+
+
+ul#menu-footer-menu-es-bnelab li:after, ul#menu-footer-menu-en-bnelab-ingles li:after {
+    content: "·";
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+ul#menu-footer-menu-es-bnelab li:last-child:after, ul#menu-footer-menu-en-bnelab-ingles li:last-child:after {
+    content: "";
+    padding: 0;
+}
+
+ul#menu-footer-menu-es-bnelab li, ul#menu-footer-menu-en-bnelab-ingles li{
+    list-style-type: none;
+    display: inline-block;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+ul#menu-footer-menu-es-bnelab, ul#menu-footer-menu-en-bnelab-ingles {
+    display: inline-block;
+    list-style: none;
+}
+
