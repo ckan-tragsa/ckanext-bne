@@ -1,5 +1,12 @@
 {% ckan_extends %}
 
+{% block header_account_logged %}
+  <li><a href="/catalog/organization/">Organizaciones</a></li>
+  <li><a href="/catalog/group/">Categorias</a></li>
+  <li><a href="/catalog/showcase">Destacados</a></li>
+  {{ super() }}
+{% endblock %}
+
 {% block contact_link %}
     <li>
       <a href="{{ h.url_for('contact.form') }}" title="{{ _('Contact') }}">
@@ -12,4 +19,10 @@
     </li>
 {% endblock %}
 
+{% block header_site_navigation_tabs %}
+<ul class="nav nav-pills">
+  <li><a href="{{h.url_for('dataset.search')}}">Catalogo de datos</a></li>
+  <li><a href="{{h.url_for('pages.pages_index')+'/informacion'}}">informacion</a></li>
+</ul>
+{% endblock %}
 

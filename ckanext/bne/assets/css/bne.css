@@ -35,6 +35,17 @@ body {
     background: repeating-linear-gradient(to right, #a71e03, #a71e03 25%, #fbbd00 25%, #fbbd00 75%, #a71e03 75%);
 }
 
+.masthead .container {
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+
+.masthead .container .header-image.navbar-left{
+    margin-right: auto;
+}
+
+
 .masthead .nav > li > a:focus, .masthead .nav > li > a:hover, .masthead .nav > .active > a, .masthead .nav > .active > a:hover, .masthead .nav > .active > a:focus {
     color: #ad1519;
 }
@@ -139,7 +150,7 @@ body {
     font-weight: bold;
 }
 
-aside{
+.site-footer aside{
     display: inline-block;
     vertical-align: middle;
     margin-inline: 1rem;

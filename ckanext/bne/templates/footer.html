@@ -1,3 +1,5 @@
+{% ckan_extends %}
+
 {% set test_lang = request.environ.CKAN_LANG %}
 {% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
 <footer id="colophon" class="site-footer" role="contentinfo">
@@ -8,24 +10,24 @@
 			   {% if test_lang == "es" %}
 					<li><b><u>DATOS ABIERTOS</u></b></li>
 					<li id="menu-item-1">
-						<a href="/pages/que-son">¿Qué son?</a>
+						<a href="{{h.url_for('pages.pages_index')+'/que-son'}}">¿Qué son?</a>
 					</li>
 					<li id="menu-item-2">
-						<a href="/pages/info-plataforma-ckan">Información plataforma</a>
+						<a href="{{h.url_for('pages.pages_index')+'/info-plataforma-ckan'}}">Información plataforma</a>
 					</li>
 					<li id="menu-item-3">
-						<a href="/pages/api">{{ _('CKAN API') }}</a>
+						<a href="{{h.url_for('pages.pages_index')+'/api'}}">{{ _('CKAN API') }}</a>
 					</li>
 				{% else %}
 					<li><b><u>OPEN DATA</u></b></li>
 					<li id="menu-item-1">
-						<a href="/pages/que-son">Overview</a>
+						<a href="{{h.url_for('pages.pages_index')+'/que-son'}}">Overview</a>
 					</li>
 					<li id="menu-item-2">
-						<a href="/pages/info-plataforma-ckan">Web information</a>
+						<a href="{{h.url_for('pages.pages_index')+'/info-plataforma-ckan'}}">Web information</a>
 					</li>
 					<li id="menu-item-3">
-						<a href="/pages/api">{{ _('CKAN API') }}</a>
+						<a href="{{h.url_for('pages.pages_index')+'/api'}}">{{ _('CKAN API') }}</a>
 					</li>
 				{% endif %}
 			</ul>
