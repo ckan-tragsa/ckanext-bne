@@ -1,35 +1,36 @@
 <div class="row fondodestacados">
-	<ul class="destacados-media-grid" id='ulShowcase'>
+	<div class="destacados-media-grid" id='ulShowcase'>
 
-	</ul>
+	</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
 function inserta(){
-	var endpoint = location.protocol + "//" + location.host + "/api/3/action/ckanext_showcase_list";
+	var endpoint = "{{h.url_for('api.action', ver=3, logic_function='ckanext_showcase_list')}}";
+	//var endpoint = "{{h.url_for('pages.pages_index')+'/api/3/action/ckanext_showcase_list'}}";
 	
 	var html = '';
 	var settings = {
 	  "url": endpoint,
-	  "method": "POST",
+	  "method": "GET",
 	  "data": "",
 	  "contentType": "application/json"
 	}
-
+	
 	$.ajax(settings).done(function (data) {
 	  $.each(data.result, function (i, item) {	
-			var img = "uploads/showcase/"+item.extras[0].value;
+			var img = "{{ h.url_for('home.index') + 'uploads/showcase/'}}"+item.extras[0].value;
 			var url = item.url;
 			var name = item.name;
 			var titulo = item.title;
 			var description = item.notes;
 			
-			html = html + "<li class='destacados-media-item' >";
+			html = html + "<div class='destacados-media-item' >";
 			html = html + "<img src='"+img+"' alt='"+name+"' class='destacados-media-image'>";
 			html = html + "<h3 class='destacados-media-heading'><a href='"+url+"'>"+titulo+"</a></h3>";
 			html = html + "<a href='"+url+"' title='Ver "+titulo+"' class='destacados-media-view' target='ckan'>";
 			html = html + "</a>";
-			html = html + "</li>";
+			html = html + "</div>";
         });
 	  document.getElementById("ulShowcase").innerHTML=html;
 	}).fail(function() {
