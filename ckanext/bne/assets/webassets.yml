@@ -13,3 +13,8 @@
    contents:
      - css/bne.css
 
+ bne-default-css:
+   filter: cssrewrite
+   output: ckanext-bne/%(version)s-bne-home.css
+   contents:
+     - css/style.css
