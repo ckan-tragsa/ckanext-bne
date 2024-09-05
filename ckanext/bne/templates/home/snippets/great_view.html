@@ -16,6 +16,7 @@ function inserta(){
 	  "data": "",
 	  "contentType": "application/json"
 	}
+
 	
 	$.ajax(settings).done(function (data) {
 	  $.each(data.result, function (i, item) {	
@@ -24,12 +25,19 @@ function inserta(){
 			var name = item.name;
 			var titulo = item.title;
 			var description = item.notes;
-			
+
+			if(description.length > 40 ){
+				descriptionCut = description.substr(1,40) + "...>>"
+			}else{
+				descriptionCut = description
+			}
+
 			html = html + "<div class='destacados-media-item' >";
 			html = html + "<img src='"+img+"' alt='"+name+"' class='destacados-media-image'>";
 			html = html + "<h3 class='destacados-media-heading'><a href='"+url+"'>"+titulo+"</a></h3>";
 			html = html + "<a href='"+url+"' title='Ver "+titulo+"' class='destacados-media-view' target='ckan'>";
 			html = html + "</a>";
+			html = html + "<p> '" +descriptionCut+"'</p>";
 			html = html + "</div>";
         });
 	  document.getElementById("ulShowcase").innerHTML=html;
