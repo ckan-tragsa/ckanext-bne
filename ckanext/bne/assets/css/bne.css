@@ -1,16 +1,18 @@
-body {
-    font-family: "Roboto", sans-serif;
+:root{
+    --anim-speed: .5s;
 }
 
-h3 {
-    /*font-family: "Reem Kufi", sans-serif;*/
-    font-size: 1.5em;
-    color: #434353;
-    font-weight: 400;
-    margin: 0.67em 0;
-      margin-top: 0.67em;
-      margin-bottom: 0.67em;
+.sticky{
+    position: fixed !important;
+    top: 0%;
+    width: 100%;
 }
+
+
+.sticky + div{
+    margin-top: 210px;
+}
+
 
 .btn {
     background-image: none;
@@ -30,6 +32,7 @@ h3 {
     background-color: #122037!important;
     position: relative;
     padding: 30px 0;
+    margin-bottom: 6px;
 }
     
 .masthead::after {
@@ -93,6 +96,27 @@ h3 {
     transition-duration: 0.3s;
 }
 
+.account{
+    ul{
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: right;
+        li:nth-child(n){
+            a{
+                display: flex;
+                align-items: center;
+                height: 100%;
+            }
+        }
+        li:nth-child(n):hover{
+            .fa{
+                color:#ddb109 !important;
+            }
+        }
+    }
+}
+
 
 /* Footer */
 .site-footer {
@@ -127,7 +151,6 @@ h3 {
     height: 50px;
     display: block;
     margin: 0px auto;
-    content: url(https://bnelab.bne.es/wp-content/uploads/2024/07/gob_mc_bne-6.png);
 }
 
 .img_recu {
@@ -135,7 +158,6 @@ h3 {
     height: 110px;
     display: block;
     margin: 0px auto;
-    content: url(https://bnelab.bne.es/wp-content/uploads/2024/07/prtr2.png);
 }
 
 .img_next {
@@ -143,7 +165,6 @@ h3 {
     height: 50px;
     display: block;
     margin: 0px auto;
-    content: url(https://bnelab.bne.es/wp-content/uploads/2024/07/ue_next.png);
 }
 
 .img_red {
@@ -151,7 +172,6 @@ h3 {
     height: 40px;
     display: block;
     margin: 0px auto;
-    content: url(https://bnelab.bne.es/wp-content/uploads/2024/07/redes_blanco.png);
 }
 
 .site-footer {
@@ -240,12 +260,12 @@ ul#menu-footer-menu-es-bnelab, ul#menu-footer-menu-en-bnelab-ingles {
     justify-content: center;
     flex-wrap: wrap;
     max-width: 1140px;
-    margin-left: 5vw;
-    margin-right: 5vw;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 
 .destacados-media-item {
-    margin: 0.5%;
+    margin: 2% 0.5%;
     border-style: solid;
     min-width: 32%;
     max-width: 49%;
@@ -258,7 +278,48 @@ ul#menu-footer-menu-es-bnelab, ul#menu-footer-menu-en-bnelab-ingles {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 23%;
+    overflow: hidden;
+    img {
+        transition: all var(--anim-speed) ease;
+        filter: opacity(0.8);
+        height: auto;
+        object-fit: cover;
+        aspect-ratio: 16 / 9;
+    }
+    p{
+        transition: var(--anim-speed);
+        color: black;
+        height: 2rem;
+        margin-top: -2rem;
+        margin-bottom: 0;
+        z-index: 2;
+        position: relative;
+        top: -50%;
+        visibility: hidden;
+        font-size: 0.01rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
 }
+
+.destacados-media-item:hover{
+    img{
+        transform: scale(1.1);
+        filter:opacity(0.5);
+    }
+    p {
+        top: -40%;
+        visibility: visible;
+        font-size: 1rem;
+    }
+    .destacados-media-heading {
+        top: -50%;
+        background-color: rgba(12, 20, 37, 1);
+    }
+}
+
 .destacados-media-item:nth-last-child(2){
     flex-basis:49%;
 }
@@ -266,6 +327,7 @@ ul#menu-footer-menu-es-bnelab, ul#menu-footer-menu-en-bnelab-ingles {
 @media (max-width: 1025px ){
     .destacados-media-item{
         min-width: 49%;
+        max-width: 100%;
     }
 }
 
@@ -279,23 +341,17 @@ ul#menu-footer-menu-es-bnelab, ul#menu-footer-menu-en-bnelab-ingles {
     box-shadow: 3px 3px 5px 0px #969696;
 }
 
-.destacados-media-image {
-    height: auto;
-    object-fit: cover;
-    aspect-ratio: 16 / 9;
-}
- 
 .destacados-media-heading {
-    margin-top: -50px;
+    margin-top: -66px;
     margin-bottom: 0px;
     background-color: rgba(12, 20, 37, 0.8);
     position: relative;
-    top: -42%;
+    top: calc(-50% + 33px);
     text-align: center;
     align-items: center;
     display: flex;
     width: 100%;
-    height: 50px;
+    height: 66px;
     justify-content: center;
     font-size: 14px;
     line-height: 1.3;
@@ -303,6 +359,12 @@ ul#menu-footer-menu-es-bnelab, ul#menu-footer-menu-en-bnelab-ingles {
     -moz-hyphens: auto;
     hyphens: auto;
     font-weight: 900;
+    transition: var(--anim-speed);
+    font-size: 24px;
+    font-weight: 200;
+    left: 0px;
+    letter-spacing: 0.5px;
+    line-height: 36px
 }
 
 .destacados-media-heading a{
@@ -312,7 +374,6 @@ ul#menu-footer-menu-es-bnelab, ul#menu-footer-menu-en-bnelab-ingles {
 
 .fondodestacados {
     color: #fff;
-    background: #eeeeee;
     display: flex;
     justify-content: center;
 }
@@ -343,4 +404,12 @@ ul#menu-footer-menu-es-bnelab, ul#menu-footer-menu-en-bnelab-ingles {
     font-size: 1em;
 }
 
-
+.containerHome{
+    h3.showcase{
+        display: flex;
+        justify-content: center;
+        font-size: 1.5em;
+        font-weight: 700;
+        letter-spacing: 0.0877915em;
+    }
+}
