@@ -6,6 +6,7 @@
     position: fixed !important;
     top: 0%;
     width: 100%;
+    z-index: 99;
 }
 
 
@@ -400,8 +401,15 @@ ul#menu-footer-menu-es-bnelab, ul#menu-footer-menu-en-bnelab-ingles {
     min-height: 0px;
   }
 
+
 .dataset-item.module-content .dataset-content .dataset-heading {
     font-size: 1em;
+}
+
+.homepage .group-list{
+    ul{
+        padding-left: 0;
+    }
 }
 
 .containerHome{
