@@ -3,6 +3,7 @@ import logging
 import ckan.lib.helpers as h
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
+import ckan.model as session
 
 import ckanext.bne.config as bne_config
 
@@ -33,8 +34,28 @@ def bne_get_bne_base_url():
     """
     return bne_config.bne_base_url
 
+@helper
+def bne_get_showcase_datasets():
+    showcase_list = tk.get_action("ckanext_showcase_list")()
+    return showcase_list
+
+@helper
+def bne_get_pages():
+    page_list = tk.get_action("ckanext_pages_list")(data_dict={'order':'true'})
+    log.warning(page_list)
+    return page_list
+
+
+@helper
+def bne_shorten_text(text,n):
+    if len(text) > n:
+        text = text[0:n]
+        text += "..>>"
+    return text
+
 ## Helpers out of ckanext-surrey
-# TODO test every helper to check if they work correctly in the newer ckan/python version 
+# TODO test every helper to check if they work correctly in the newer ckan/python version
+# currently unused, migth remove 
 
 
 @helper
