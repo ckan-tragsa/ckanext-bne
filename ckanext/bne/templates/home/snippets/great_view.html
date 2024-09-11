@@ -1,53 +1,12 @@
 <div class="row fondodestacados">
 	<div class="destacados-media-grid" id='ulShowcase'>
-
+		{% for showcase in h.bne_get_showcase_datasets() %}
+			<div class="destacados-media-item">
+				<img src="{{ h.url_for('home.index') + 'uploads/showcase/'+ showcase.extras[0].value}}" alt="{{ showcase.name }}" class="destacados-media-image" >
+				<h3 class='destacados-media-heading'><a href="{{ h.url_for('showcase_blueprint.read', id='') + showcase.name }}">{{showcase.title}}</a></h3>
+				<a href="{{ h.url_for('showcase_blueprint.read', id='') + showcase.name }}" title='Ver {{showcase.title}}' class='destacados-media-view' target='ckan'></a>
+				<p>{{showcase.notes}}</p>
+			</div>
+		{% endfor %}
 	</div>
 </div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
-function inserta(){
-	var endpoint = "{{h.url_for('api.action', ver=3, logic_function='ckanext_showcase_list')}}";
-	//var endpoint = "{{h.url_for('pages.pages_index')+'/api/3/action/ckanext_showcase_list'}}";
-	
-	var html = '';
-	var settings = {
-	  "url": endpoint,
-	  "method": "GET",
-	  "data": "",
-	  "contentType": "application/json"
-	}
-
-	
-	$.ajax(settings).done(function (data) {
-	  $.each(data.result, function (i, item) {	
-			var img = "{{ h.url_for('home.index') + 'uploads/showcase/'}}"+item.extras[0].value;
-			var url = item.url;
-			var name = item.name;
-			var titulo = item.title;
-			var description = item.notes;
-
-			if(description.length > 40 ){
-				descriptionCut = description.substr(1,40) + "...>>"
-			}else{
-				descriptionCut = description
-			}
-
-			html = html + "<div class='destacados-media-item' >";
-			html = html + "<img src='"+img+"' alt='"+name+"' class='destacados-media-image'>";
-			html = html + "<h3 class='destacados-media-heading'><a href='"+url+"'>"+titulo+"</a></h3>";
-			html = html + "<a href='"+url+"' title='Ver "+titulo+"' class='destacados-media-view' target='ckan'>";
-			html = html + "</a>";
-			html = html + "<p> '" +descriptionCut+"'</p>";
-			html = html + "</div>";
-        });
-	  document.getElementById("ulShowcase").innerHTML=html;
-	}).fail(function() {
-		console.log("ERROR ajax");
-	});
-	
-	
-	
-}
-
-inserta();
-</script>
