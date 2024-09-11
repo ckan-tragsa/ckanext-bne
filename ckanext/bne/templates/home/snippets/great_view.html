@@ -5,7 +5,7 @@
 				<img src="{{ h.url_for('home.index') + 'uploads/showcase/'+ showcase.extras[0].value}}" alt="{{ showcase.name }}" class="destacados-media-image" >
 				<h3 class='destacados-media-heading'><a href="{{ h.url_for('showcase_blueprint.read', id='') + showcase.name }}">{{showcase.title}}</a></h3>
 				<a href="{{ h.url_for('showcase_blueprint.read', id='') + showcase.name }}" title='Ver {{showcase.title}}' class='destacados-media-view' target='ckan'></a>
-				<p>{{showcase.notes}}</p>
+				<p>{{h.bne_shorten_text(showcase.notes,50)}}</p>
 			</div>
 		{% endfor %}
 	</div>

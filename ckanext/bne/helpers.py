@@ -42,7 +42,7 @@ def bne_get_showcase_datasets():
 @helper
 def bne_get_pages():
     page_list = tk.get_action("ckanext_pages_list")(data_dict={'order':'true'})
-    log.warning(page_list)
+    #log.warning(page_list)
     return page_list
 
 
