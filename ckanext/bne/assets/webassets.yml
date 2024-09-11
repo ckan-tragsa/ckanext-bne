@@ -1,11 +1,11 @@
-# bne-js:
-#   filter: rjsmin
-#   output: ckanext-bne/%(version)s-bne.js
-#   contents:
-#     - js/bne.js
-#   extra:
-#     preload:
-#       - base/main
+ bne-js:
+   filter: rjsmin
+   output: ckanext-bne/%(version)s-bne.js
+   contents:
+     - js/bne.js
+   extra:
+     preload:
+       - base/main
 
  bne-css:
    filter: cssrewrite

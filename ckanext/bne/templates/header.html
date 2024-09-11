@@ -38,28 +38,10 @@
 {% block header_site_navigation_tabs %}
 <ul class="nav nav-pills">
   <li><a href="{{h.url_for('dataset.search')}}">Catalogo de datos</a></li>
-  <li><a href="{{h.url_for('pages.pages_index')+'/informacion'}}">informacion</a></li>
+  {% for page in h.bne_get_pages() %}
+  <li><a>{{page.title}}</a></li>
+  {% endfor %}
 </ul>
-<script>
-  // When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
-
-// Get the header
-var header = document.getElementsByClassName("masthead")[0];
-console.log(header)
-
-// Get the offset position of the navbar
-var sticky = header.offsetTop;
-
-// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.pageYOffset > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-} 
-</script>
 {% endblock %}
 
 
