@@ -1,0 +1,39 @@
+<div class="row fondotarjetas">
+    {% set params = h.get_params() %}
+	<div class="tarjetas-media-grid" id='ulShowcase'>
+        {% set entries = h.bne_call_api(h.get_params_api()) %}
+		{% for entry in entries['data'] %}
+			<div class="tarjetas-media-item">
+                {% set std = h.bne_standarize_entry(entry) %}
+                <h3>{{ std['title'] }}</h3>
+                {% for field in std['content'] %}
+                    <div><strong>{{field + ":"}}</strong>
+                    {{std['content'][field]}}
+                    </div>
+                {% endfor %}
+			</div>
+		{% endfor %}
+	</div>
+    <div class="api-nav">
+        {% if 'page' in params %}
+            {% if params['page'] != '0' %}
+                <input type="button" value="{{ _('<') }}" onclick="setParam('page',{{params['page']|int-1}})">
+            {% endif %}
+            {% set start_counter = 0%}
+            {% if params['page']|int > 5 %}
+                {% set start_counter = params['page']|int-5%}
+                <div>...</div>
+            {% endif %}
+            {% for i in range(start_counter,params['page']|int)%}
+                <input type="button" value="{{i}}" onclick="setParam('page',{{i}})">
+            {% endfor %}
+                <div>{{params['page']}}</div>
+            {% if entries['data']|length == h.get_number_entries_api() %}
+                <input type="button" value="{{ _('>') }}" onclick="setParam('page',{{params['page']|int+1}})">
+            {% endif %}
+        {% endif %}
+        {% if 'page' not in params %}
+                <input type="button" value="{{ _('>') }}" onclick="setParam('page','1')">
+        {% endif %}
+    </div>
+</div>

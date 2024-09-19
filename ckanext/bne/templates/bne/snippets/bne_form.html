@@ -1,0 +1,18 @@
+<div class="filters">
+    <h2 class="module-heading search-heading">
+        <span>
+            <i class="fa fa-filter"></i>
+            filtros
+        </span>
+    </h2>
+    <form id="inputForm">
+    {% set parameters = h.get_params_api() %}
+    {% set fields = h.bne_call_api(params = {'table':parameters.table}, fields = True)['fields'] %}
+    {% for entry in fields %}
+        {% if entry[0:2] != 't_' %}
+            <input type="text" id="{{entry}}" placeholder="{{entry}}" value='{{parameters[entry]}}' class="filters-input"/>
+        {% endif %}
+    {% endfor %}
+    <input type="button" onclick="formOnClick()" value="{{_('submit')}}" label="submit">
+    </form>
+</div>
