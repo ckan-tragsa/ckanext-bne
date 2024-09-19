@@ -1,6 +1,7 @@
 {% extends "page.html" %}
 
 {% block primary %}
+{% set params = h.get_params() %}
 {% snippet "bne/snippets/bne_api_pills.html" %}
 <div class="primary col-sm-9 col-xs-12" role="main">
     {% snippet 'bne/snippets/bne_entry_card.html' %}
@@ -10,7 +11,7 @@
     <h2 class="module-heading">
         <i class="fa fa-globe"></i>
         busqueda de dataset
-        <a class="action" href='{{h.url_for("bne.base")}}' style="float: right;">
+        <a class="action" href="{{h.url_for('bne.base')+'?table='+params.table+'&page=0'}}" style="float: right;">
         limpiar
             <i class="fa fa-trash"></i>
         </a>
