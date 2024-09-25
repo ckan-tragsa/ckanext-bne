@@ -1,8 +1,9 @@
 {% extends "page.html" %}
 
 {% block primary %}
-{% set params = h.get_params() %}
+{% set params = h.get_params_api() %}
 {% snippet "bne/snippets/bne_api_pills.html" %}
+
 <div class="primary col-sm-9 col-xs-12" role="main">
     {% snippet 'bne/snippets/bne_entry_card.html' %}
 </div>
