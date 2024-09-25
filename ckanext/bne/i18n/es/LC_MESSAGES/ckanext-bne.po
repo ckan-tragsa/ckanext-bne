@@ -68,3 +68,6 @@ msgstr "Doy mi consentimiento para que los datos personales que facilito puedan 
 
 msgid "I have read and agree to the privacy policy."
 msgstr "He leído y acepto la Política de protección de datos."
+
+msgid "Dataset Search"
+msgstr "Búsqueda de Dataset"

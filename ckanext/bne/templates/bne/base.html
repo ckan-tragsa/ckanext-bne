@@ -10,9 +10,9 @@
 <aside class="secondary col-sm-3">
     <h2 class="module-heading">
         <i class="fa fa-globe"></i>
-        busqueda de dataset
+            {{ _('Dataset Search') }}
         <a class="action" href="{{h.url_for('bne.base')+'?table='+params.table+'&page=0'}}" style="float: right;">
-        limpiar
+            {{ _('Delete') }}
             <i class="fa fa-trash"></i>
         </a>
     </h2>
