@@ -7,29 +7,16 @@
     {% block footer_content %}
 		<div>
 			<div id="menu-footer-menu-es-bnelab" class="footer-links-menu">
-			   {% if test_lang == "es" %}
-					<div><b><u>DATOS ABIERTOS</u></b></div>
-					<div id="menu-item-1">
-						<a href="{{h.url_for('pages.pages_index')+'/que-son'}}">¿Qué son?</a>
-					</div>
-					<div id="menu-item-2">
-						<a href="{{h.url_for('pages.pages_index')+'/info-plataforma-ckan'}}">Información plataforma</a>
-					</div>
-					<div id="menu-item-3">
-						<a href="{{h.url_for('pages.pages_index')+'/api'}}">{{ _('CKAN API') }}</a>
-					</div>
-				{% else %}
-					<div><b><u>OPEN DATA</u></b></div>
-					<div id="menu-item-1">
-						<a href="{{h.url_for('pages.pages_index')+'/que-son'}}">Overview</a>
-					</div>
-					<div id="menu-item-2">
-						<a href="{{h.url_for('pages.pages_index')+'/info-plataforma-ckan'}}">Web information</a>
-					</div>
-					<div id="menu-item-3">
-						<a href="{{h.url_for('pages.pages_index')+'/api'}}">{{ _('CKAN API') }}</a>
-					</div>
-				{% endif %}
+				<div><b><u>{{ _('OPEN DATA') }}</u></b></div>
+				<div id="menu-item-1">
+					<a href="{{h.url_for('pages.pages_index')+'/que-son'}}">{{_('Overview')}}</a>
+				</div>
+				<div id="menu-item-2">
+					<a href="{{h.url_for('pages.pages_index')+'/info-plataforma-ckan'}}">{{_('Web information')}}</a>
+				</div>
+				<div id="menu-item-3">
+					<a href="{{h.url_for('pages.pages_index')+'/api'}}">{{ _('CKAN API') }}</a>
+				</div>
 			</div>
 		</div>
 
@@ -63,32 +50,18 @@
 
 		<div>
 			<div id="menu-footer-menu-es-bnelab" class="footer-links-menu">
-			   {% if test_lang == "es" %}
-					<div id="menu-item-825">
-						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/avisoLegal/">Aviso legal</a></div>
-					<div id="menu-item-826">
-						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Protecciondedatos/">Protección de datos</a>
-					</div>
-					<div id="menu-item-827">
-						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Cookies/">Política de cookies</a>
-					</div>
-					<div id="menu-item-477">
-						<a title="Contacta con BNElab" href="mailto:bnelab@bne.es">bnelab@bne.es</a>
-					</div>
-				{% else %}
-					<div id="menu-item-825">
-						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/avisoLegal/">Legal notice</a>
-					</div>
-					<div id="menu-item-826">
-						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Protecciondedatos/">Data protection</a>
-					</div>
-					<div id="menu-item-827">
-						<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Cookies/">Cookie podivc</a>
-					</div>
-					<div id="menu-item-477">
-						<a title="Contacta con BNElab" href="mailto:bnelab@bne.es">bnelab@bne.es</a>
-					</div>
-				{% endif %}
+				<div id="menu-item-825">
+					<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/avisoLegal/">{{_('Legal notice')}}</a>
+				</div>
+				<div id="menu-item-826">
+					<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Protecciondedatos/">{{_('Data protection')}}</a>
+				</div>
+				<div id="menu-item-827">
+					<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Cookies/">{{_('Cookie policy')}}</a>
+				</div>
+				<div id="menu-item-477">
+					<a title="Contacta con BNElab" href="mailto:bnelab@bne.es">bnelab@bne.es</a>
+				</div>
 			</div>
 		</div>	
 
