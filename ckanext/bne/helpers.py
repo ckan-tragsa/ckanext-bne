@@ -1,5 +1,9 @@
 import logging
+import re
+import json
 
+from ckan import model
+import ckan.logic as logic
 import ckan.lib.helpers as h
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
@@ -73,28 +77,91 @@ def bne_shorten_text(text,n):
         text += "..>>"
     return text
 
-@helper
-def bne_call_api(params, fields = False):
+def _bne_humanize_field_name(field_name):
     """
-    Calls the BNE api
-    if fields = True it returns table fields
+    Converts a field name to a more human-readable format.
+    Example: 'obras_relacionadas_en_el_catalogo_BNE' -> 'Obras relacionadas en el catalogo BNE'
+    Example: 'id' -> 'ID'
+    """
+    # Replace underscores with spaces
+    humanized = re.sub(r'_', ' ', field_name)
+    # Capitalize the first word and keep the rest lowercase
+    humanized = humanized.capitalize()
+    # If the field name is two letters, make it uppercase
+    if len(field_name) == 2:
+        humanized = field_name.upper()
+    return humanized
+
+@helper
+def bne_standarize_entry(entry):
+    """
+    Clean dataset and standardize the tables for display 
 
     Returns:
-        dict: requested elements
+        dict: dictionary with title and content
     """
+    entry_std = {}
+    
+    # Remove marc21 entries to make it easier to read and use
+    entry_aux = entry.copy()
+    for key in entry_aux:
+        if key[0:2] == "t_":
+            entry.pop(key)
+    
+    # Standardize field names
+    entry_std['content'] = { _bne_humanize_field_name(k): v for k, v in entry.items() }
+
+    return entry_std
+
+@helper
+def bne_call_api(params, fields=False):
+    """
+    Calls the BNE API and returns the requested elements.
+
+    Args:
+        params (dict): The parameters to be sent to the API.
+        fields (bool): If True, returns table fields. Defaults to False.
+
+    Returns:
+        dict: The response from the API. If `fields` is False, the response
+              includes standardized entries and all possible fields. If an
+              error occurs, returns a dictionary with an empty 'data' list.
+    """
+    params2 = params.copy()
+    params2.pop('nentries', None)
     if fields:
-        call_url = bne_config.bne_api_base_url+"fields/"+params.pop('table')+"?"
+        call_url = bne_config.bne_api_base_url + "fields/" + params2.pop('table') + "?"
     else:
-        call_url = bne_config.bne_api_base_url+params.pop('table')+"?"
-    for key in params:
-        call_url += key +"="+params[key]+'&'
+        call_url = bne_config.bne_api_base_url + params2.pop('table') + "?"
+    for key in params2:
+        call_url += key + "=" + params2[key] + '&'
 
     try:
         r = req.get(call_url)
-        return r.json()
-    except:
-        log.warning('Bad API response')
+        data = r.json()
+        
+        if not fields:
+            # Recopilar todos los campos posibles
+            all_fields = set()
+            for entry in data.get('data', []):
+                std = bne_standarize_entry(entry)
+                all_fields.update(std['content'].keys())
 
+            # Asegurarse de que cada entrada tenga todos los campos posibles
+            for entry in data.get('data', []):
+                std = bne_standarize_entry(entry)
+                for field in all_fields:
+                    if field not in std['content']:
+                        std['content'][field] = ''
+                entry['standardized'] = std
+
+            # Añadir todos los campos posibles a los datos
+            data['all_fields'] = [_bne_humanize_field_name(field) for field in all_fields]
+
+        return data
+    except Exception as e:
+        log.warning('Bad API response: %s', e)
+        return {'data': []}
 
 @helper
 def get_params():
@@ -124,7 +191,7 @@ def get_number_entries_api():
     return bne_config.bne_api_entries
 
 @helper
-def get_params_api(default={'table':'geo', 'page':'0'}, rows= get_number_entries_api()):
+def bne_get_params_api(default={'table':'geo', 'page':'0'}, rows= get_number_entries_api()):
     '''
     Returns:
         dict: query param data, adapted for the usage with the api 
@@ -139,43 +206,10 @@ def get_params_api(default={'table':'geo', 'page':'0'}, rows= get_number_entries
     params['rowid'] = str(rows)+'-'+str(page)
     return params
     
-
-@helper
-def bne_standarize_entry(entry):
-
-    """
-    clean dataset and standarize the tables for display 
-
-    Returns:
-        dict: dictionary with title and content
-        
-    """
-    entry_std = {}
-
-    if 'nombre_de_persona' in entry:
-        entry_std["title"] = entry.pop('nombre_de_persona')
-
-    elif 'nombre_de_lugar' in entry:
-        entry_std["title"] = entry.pop("nombre_de_lugar")
-    
-    #remove marc21 entries to make it easier to read and use
-    entry_aux = entry.copy()
-    for key in entry_aux:
-        if key[0:2] == "t_":
-            entry.pop(key)
-        
-    entry_std['content'] = entry
-
-    return entry_std
-
-
 @helper 
-def bne_get_pills(r=[0,255],g=[0,255],b=[0,255]):
+def bne_get_pills():
     """
-    r = range for red
-    g = range for green
-    b = range for blue
-    gets table fields and sets up and gives it a color within a given range
+    gets table fields and sets up and gives it a color within a given range defined in config.py
 
     Returns:
         dict: dictionary with table name, title, and a pseudorandom asigned color 
@@ -183,10 +217,71 @@ def bne_get_pills(r=[0,255],g=[0,255],b=[0,255]):
     out = {}
     for key in bne_config.bne_api_tables:
         random.seed(key)
-        color_int = [random.randint(r[0],r[1]),random.randint(g[0],g[1]),random.randint(b[0],b[1])]
         out[key] =  {'table':bne_config.bne_api_tables[key],
-                     'color':'#'+ bytes(color_int).hex()}
+                     'icon':bne_config.bne_api_pill_style[key]['icon']}
     return out
+
+@helper 
+def bne_url_for_static_or_external(url:str):
+    """
+    fix of url_for_static_or_external() for great_view
+    adds '/uploads/showcase/' to the URL if it's internal
+    """
+    if 'https' == url[0:5] or 'http:' == url[0:5]:
+        return h.url_for_static_or_external(url)
+    else:
+        return h.url_for_static_or_external('/uploads/showcase/' + url)
+
+@helper 
+def get_next_pages(n:int , count:int , max:int = 3):
+    """
+    Returns list of next pages from current
+    returns:
+        list: number of pages
+    """
+    j = 0
+    out = []
+    for i in range(n+1, int(count/bne_config.bne_api_entries)):
+        j += 1
+        out.append(i)
+        if j == max:
+            return out     
+    return out 
+
+
+
+@helper
+def bne_get_featured_datasets(count=5):
+    """
+    Retrieves a specified number of featured datasets from the CKAN instance.
+    
+    Parameters:
+    count (int): Number of featured datasets to retrieve. Default is 5.
+    
+    Returns:
+    list: A list of dictionaries, each representing a featured dataset.
+
+    This function uses json.loads to parse JSON-encoded strings received from the API for fields such as 'title_translated' and 'notes_translated'.
+    """
+    fq = '+featured:true'
+    search_dict = {
+        'fq': fq,
+        'sort': 'metadata_modified desc',
+        'fl': 'name, extras_title_translated, extras_notes_translated, metadata_modified, extras_featured_image',
+        'rows': count
+    }
+    context = {'model': model, 'session': model.Session}
+    result = logic.get_action('package_search')(context, search_dict)
+
+    datasets = result.get('results', [])
+    for dataset in datasets:
+        # Parse 'extras_title_translated' and 'extras_notes_translated' fields
+        for field in ['title_translated', 'notes_translated']:
+            value = dataset.get(field)
+            dataset[field] = json.loads(value) if value else {}
+
+    return datasets
+
 
 ## Helpers out of ckanext-surrey
 # TODO test every helper to check if they work correctly in the newer ckan/python version

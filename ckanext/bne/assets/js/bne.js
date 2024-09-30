@@ -1,49 +1,25 @@
-// When the user scrolls the page, execute myFunction
-window.onscroll = function() {myFunction()};
-
-// Get the header
-var header = document.getElementsByClassName("masthead")[0];
-console.log(header)
-
-// Get the offset position of the navbar
-var sticky = header.offsetTop;
-
-// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-function myFunction() {
-  if (window.scrollY > sticky) {
-    header.classList.add("sticky");
-  } else {
-    header.classList.remove("sticky");
-  }
-} 
-
 const params = new URLSearchParams(window.location.search)
 
-function setParam(key, value){
+function setParam(values){
   parameters = {}
   url = window.location.origin + window.location.pathname + "?"
   for (const key of params.keys()) {
     parameters[key] = params.get(key)
   }
-  parameters[key] = value
+  for(const [key,value] of Object.entries(values)){
+    parameters[key] = values[key]
+  }
   for (const [key,value] of Object.entries(parameters)){
     url += key + "=" +value+'&'
   }
   window.location.replace(url)
 }
 
-function getParam(key){
-  if(params.has(key)) {
-      return params.get(key)
-  }else{
-      return ""
-  }
-}
 
 function formOnClick(){
   parameters = {}
   url = window.location.origin + window.location.pathname + "?" +'table=' + params.get('table') + '&'+"page=0&"
-  for (const input of document.getElementsByClassName('filters-input')){
+  for (const input of document.getElementsByClassName('form-control custom-input')){
     if(input.value != ""){
       parameters[input.id] = input.value
     }
@@ -54,4 +30,35 @@ function formOnClick(){
   window.location.replace(url)
 }
 
+function bneApiCall(apiUrl){
+  fetch(apiUrl)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    html = '<table>'
+    for(entry in data['data']){
+      html += bneGenerateTable(data['data'][entry])
+    }
+    html += '</table>'
+    console.log(html)
+    return html
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+function bneGenerateTable(data){
+  table = '<tr>'
+  console.log(data)
+  for(var j in data){
+    table += '<td>' + data[j] + '</td>'
+  }
+  table += '</tr>'
+  return table
+}
 

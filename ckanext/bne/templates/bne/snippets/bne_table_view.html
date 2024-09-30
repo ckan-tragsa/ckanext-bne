@@ -1,0 +1,23 @@
+{% set all_fields = results['all_fields'] %}
+
+<div class="bne-api-table-responsive">
+    <table class="table table-striped table-bordered bne-api-table">
+        <thead>
+            <tr>
+                {% for field in all_fields %}
+                    <th title="{{ field }}">{{ field }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in results['data'] %}
+                {% set std = entry['standardized'] %}
+                <tr>
+                    {% for field in all_fields %}
+                        <td>{{ std['content'][field] }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>

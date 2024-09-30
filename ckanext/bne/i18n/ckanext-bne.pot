@@ -56,5 +56,25 @@ msgstr ""
 msgid "I have read and agree to the privacy policy."
 msgstr ""
 
-msgid "Dataset Search
+msgid "Dataset Search"
+msgstr ""
+
+# ckanext/bne/templates/home/layout1.html
+msgid "BNE API"
+msgstr ""
+
+# ckanext/bne/templates/home/layout1.html
+msgid "Featured"
+msgstr ""
+
+# ckanext/bne/templates/header.html
+msgid "Information"
+msgstr ""
+
+# ckanext/bne/templates/bne/base.html
+msgid "Clean"
+msgstr ""
+
+# ckanext/bne/templates/bne/base.html
+msgid "The API did not respond with any data. <br><strong>Please check the status!</strong>"
 msgstr ""

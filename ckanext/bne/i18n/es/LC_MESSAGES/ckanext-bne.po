@@ -71,3 +71,22 @@ msgstr "He leído y acepto la Política de protección de datos."
 
 msgid "Dataset Search"
 msgstr "Búsqueda de Dataset"
+
+msgid "BNE API"
+msgstr "API BNE"
+
+# ckanext/bne/templates/home/layout1.html
+msgid "Featured"
+msgstr "Destacados"
+
+# ckanext/bne/templates/header.html
+msgid "Information"
+msgstr "Información"
+
+# ckanext/bne/templates/bne/base.html
+msgid "Clean"
+msgstr "Limpiar"
+
+# ckanext/bne/templates/bne/base.html
+msgid "The API did not respond with any data. <br><strong>Please check the status!</strong>"
+msgstr "La API no ha devuelto ningún dato.  <br><strong>¡Por favor, comprueba el estado!</strong>"
