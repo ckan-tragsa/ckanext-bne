@@ -8,6 +8,8 @@ Customization extension for the Open Data portal of the BNE
 * Dataset showcase on the home screen
 * BNE api integration
 * Stylized to be similar to the BNE style
+  
+![image](https://github.com/user-attachments/assets/6d67ef52-3d59-4e8b-9233-e65e59b582db)
 
 
 ## Requirements
@@ -19,14 +21,6 @@ Customization extension for the Open Data portal of the BNE
 | 2.8             | not tested    |
 | 2.9             | not tested    |
 | 2.10            | yes           |
-
-
-Suggested values:
-
-* "yes"
-* "not tested" - I can't think of a reason why it wouldn't work
-* "not yet" - there is an intention to get it working
-* "no"
 
 
 ## Installation
