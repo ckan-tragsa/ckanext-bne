@@ -1,42 +1,29 @@
-<div class="container mt-5">
-    {% set results = h.bne_call_api(h.bne_get_params_api()) %}
-    
+<div class="container mt-5">    
     {% block bne_table_view %}
-        {% snippet "bne/snippets/bne_table_view.html", results=results %}
+        {#{% snippet "bne/snippets/bne_table_view.html", results=results %}#}
+        <div class="bne-api-table-responsive" id="bne-api-table">   
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block aditional_info %}{# modify with caution, js uses the innerHTML of these elements as variables #}
+        <div class = "bne-api-table-footer">
+            <a id="api-url" href="{{h.generate_api_url(h.bne_get_params_api())}}">api url</a>
+
+            <div> {{_('number of entries :')}}<div id="nentries">0</div></div>
+
+            <div>
+                <input id="bne-rows" type="number" value="{{h.bne_get_api_entries()}}" min="5" max="50">
+                <button onclick="updateVars()" class="btn btn-secondary btn-sm">{{_("update")}}</button>
+            </div>
+        </div>
     {% endblock %}
 
 </div>
-    {% set params = h.get_params() %}
-    <div class="api-nav">
-        {% if 'page' in params %}
-            {% if params['page'] != '0' %}
-                <input type="button" value="{{ _('<') }}" onclick="setParam({{'{page:'}}{{(params['page']|int-1)}}{{','}}{{'nentries:'}}{{nentries}}{{'}'}})">
-            {% endif %}
-            {% set start_counter = 0%}
-            {% if params['page']|int > 5 %}
-                {% set start_counter = params['page']|int-5%}
-                <div>...</div>
-            {% endif %}
-            {% for i in range(start_counter,params['page']|int)%}
-                <input type="button" value="{{i}}" onclick="setParam({{'{page:'}}{{i}}{{','}}{{'nentries:'}}{{nentries}}{{'}'}})">
-            {% endfor %}
-                <div class="current-page">{{params['page']}}</div>
-            {%set next_pages = h.get_next_pages(params.page|int,nentries|int)%}
-            {% for i in next_pages%}
-                <input type="button" value="{{i}}" onclick="setParam({{'{page:'}}{{i}}{{','}}{{'nentries:'}}{{nentries}}{{'}'}})">
-            {% endfor %}
-            {% if next_pages|length == 3%}
-                <div>...</div>
-                {% set last_page = (nentries|int/h.get_number_entries_api())|round(0,'ceil')|int %}
-                <input type="button" value="{{last_page}}" onclick="setParam({{'{page:'}}{{last_page}}{{','}}{{'nentries:'}}{{nentries}}{{'}'}})">
-            {% endif%}
-            
-            {% if results['results']|length == h.get_number_entries_api() %}
-                <input type="button" value="{{ _('>') }}" onclick="setParam('page',{{params['page']|int+1}}{{','}}{{'nentries:'}}{{nentries}}{{'}}'}})">
-            {% endif %}
-        {% endif %}
-        {% if 'page' not in params %}
-                <input type="button" value="{{ _('>') }}" onclick="setParam({{'{page:1,nentries:'}}{{nentries}}{{'}'}})">
-        {% endif %} 
+    <div id="api-nav" class="api-nav">
     </div>
 </div>

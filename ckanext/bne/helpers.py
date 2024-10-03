@@ -31,6 +31,10 @@ def helper(fn):
     return fn
 
 @helper
+def bne_get_api_entries():
+    return bne_config.bne_api_entries
+
+@helper
 def bne_get_bne_base_url():
     """
     Retrieves the BNE base URL.
@@ -39,6 +43,16 @@ def bne_get_bne_base_url():
         str: The URL.
     """
     return bne_config.bne_base_url
+
+@helper 
+def bne_get_bne_api_base_url():
+    """
+    Retrieves the BNE base URL.
+
+    Returns:
+        str: The URL.
+    """
+    return bne_config.bne_api_base_url
 
 @helper
 def bne_get_showcase_datasets():
@@ -113,6 +127,29 @@ def bne_standarize_entry(entry):
 
     return entry_std
 
+@helper 
+def generate_api_url(params, fields=False):
+    """
+    generates API URL from params
+
+    Args:
+        params (dict): The parameters to be sent to the API.
+        fields (bool): If True, returns table fields. Defaults to False.
+
+    Returns:
+        str: a url 
+    """
+    params2 = params.copy()
+    params2.pop('nentries', None)
+    if fields:
+        call_url = bne_config.bne_api_base_url + "fields/" + params2.pop('table') + "?"
+    else:
+        call_url = bne_config.bne_api_base_url + params2.pop('table') + "?"
+    for key in params2:
+        call_url += key + "=" + params2[key] + '&'
+    return call_url
+
+
 @helper
 def bne_call_api(params, fields=False):
     """
@@ -127,14 +164,7 @@ def bne_call_api(params, fields=False):
               includes standardized entries and all possible fields. If an
               error occurs, returns a dictionary with an empty 'data' list.
     """
-    params2 = params.copy()
-    params2.pop('nentries', None)
-    if fields:
-        call_url = bne_config.bne_api_base_url + "fields/" + params2.pop('table') + "?"
-    else:
-        call_url = bne_config.bne_api_base_url + params2.pop('table') + "?"
-    for key in params2:
-        call_url += key + "=" + params2[key] + '&'
+    call_url = generate_api_url(params, fields)
 
     try:
         r = req.get(call_url)
@@ -162,6 +192,8 @@ def bne_call_api(params, fields=False):
     except Exception as e:
         log.warning('Bad API response: %s', e)
         return {'data': []}
+
+
 
 @helper
 def get_params():
@@ -191,7 +223,7 @@ def get_number_entries_api():
     return bne_config.bne_api_entries
 
 @helper
-def bne_get_params_api(default={'table':'geo', 'page':'0'}, rows= get_number_entries_api()):
+def bne_get_params_api(default={'table':'geo'}, rows= get_number_entries_api()):
     '''
     Returns:
         dict: query param data, adapted for the usage with the api 
@@ -202,9 +234,9 @@ def bne_get_params_api(default={'table':'geo', 'page':'0'}, rows= get_number_ent
     for key in default:
         if key not in params:
             params[key] = default[key]  
-    page = params.pop('page')
-    params['rowid'] = str(rows)+'-'+str(page)
     return params
+
+
     
 @helper 
 def bne_get_pills():

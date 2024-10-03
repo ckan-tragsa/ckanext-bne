@@ -7,6 +7,7 @@ catalog_endpoints:
     endpoint_icon: /images/endpoints/catalog-rdf-eu.png
     fa_icon: fa-share-alt
     description: RDF DCAT-AP 2.1.1 Endpoint for european data portals.
+    profile_id: dcat_ap
     profile: eu_dcat_ap_2,eu_dcat_ap_scheming
     profile_label: DCAT-AP 2
     profile_label_order: 1
@@ -22,6 +23,7 @@ catalog_endpoints:
     fa_icon: fa-share-alt
     description: RDF DCAT-AP 3.0.0 Endpoint for european data portals.
     profile: eu_dcat_ap_3,eu_dcat_ap_scheming
+    profile_id: dcat_ap
     profile_label: DCAT-AP 3
     profile_label_order: 1
     profile_info_url: https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe
@@ -36,6 +38,7 @@ catalog_endpoints:
     fa_icon: fa-share-alt
     description: RDF DCAT-AP 2.1.1 Endpoint for european data portals.
     profile: eu_dcat_ap_2,eu_dcat_ap_scheming
+    profile_id: dcat_ap
     profile_label: DCAT-AP 2
     profile_label_order: 2
     profile_info_url: https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe
@@ -50,6 +53,7 @@ catalog_endpoints:
     fa_icon: fa-share-alt
     description: RDF DCAT-AP 3.0.0 Endpoint for european data portals.
     profile: eu_dcat_ap_3,eu_dcat_ap_scheming
+    profile_id: dcat_ap
     profile_label: DCAT-AP 3
     profile_label_order: 2
     profile_info_url: https://joinup.ec.europa.eu/collection/semic-support-centre/solution/dcat-application-profile-data-portals-europe
@@ -64,6 +68,7 @@ catalog_endpoints:
     fa_icon: fa-share-alt
     description: RDF NTI-RISP Endpoint for spanish data portals.
     profile: es_dcat
+    profile_id: es_dcat
     profile_label: NTI-RISP
     profile_label_order: 3
     profile_info_url: https://datos.gob.es/es/documentacion/guia-de-aplicacion-de-la-norma-tecnica-de-interoperabilidad-de-reutilizacion-de
@@ -78,6 +83,7 @@ catalog_endpoints:
     fa_icon: fa-share-alt
     description: JSON-LD NTI-RISP Endpoint for spanish data portals.
     profile: es_dcat
+    profile_id: es_dcat
     profile_label: NTI-RISP
     profile_label_order: 3
     profile_info_url: https://datos.gob.es/es/documentacion/guia-de-aplicacion-de-la-norma-tecnica-de-interoperabilidad-de-reutilizacion-de
@@ -93,6 +99,7 @@ catalog_endpoints:
     fa_icon: fa-share-alt
     description: SPARQL Endpoint for querying RDF data.
     profile: sparql
+    profile_id: sparql
     profile_label: SPARQL
     profile_label_order: 5
     profile_info_url: https://wwwhttps://www.w3.org/TR/2013/REC-sparql11-protocol-20130321/.w3.org/TR/sparql11-overview/
@@ -107,6 +114,7 @@ catalog_endpoints:
     fa_icon: fa-cogs
     description: CKAN’s Action API is a powerful RPC-style API.
     profile: ckan
+    profile_id: ckan
     profile_label: CKAN-API
     profile_label_order: 4
     profile_info_url: https://docs.ckan.org/en/latest/api/index.html

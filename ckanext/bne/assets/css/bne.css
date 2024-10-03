@@ -344,7 +344,7 @@ body, h1, h2, h3, h4, h5, h6, a  {
 /* BNE API */ 
 .bne-api-filters {
     max-width: 600px;
-    margin: 0 auto; 
+    margin: 3rem auto; 
 
     .module-heading {
         display: flex;
@@ -443,23 +443,39 @@ body, h1, h2, h3, h4, h5, h6, a  {
 
 /* Estilos específicos para las tablas de bne-api */
 .bne-api-table-responsive {
+    overflow-x: auto;
+    border-radius: var(--bne-border-radius);
     .bne-api-table {
-        table-layout: fixed; 
-        width: 100%; 
-        overflow: scroll;
-
+        border-color: var(--bne-dark-blue);
+        
+        tr:first-child{
+            background-color: var(--bne-blue);
+            th{
+                color: white;
+            }
+        }
+        tr:nth-child(2n) {
+            background-color: var(--bne-grey);
+        }
         td, th {
-            word-wrap: break-word;
-            word-break: break-all; 
-            max-height: 200px; 
-            overflow: hidden;
-            text-overflow: ellipsis; 
+            max-height: 100px;
             white-space: normal; 
+            overflow-y: scroll;
         }
         th {
+            min-width: 150px;
             white-space: nowrap; 
             overflow: hidden; 
             text-overflow: ellipsis; 
         }
+    }
+}
+
+.bne-api-table-footer{
+    display:flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    div{
+        display: flex;
     }
 }

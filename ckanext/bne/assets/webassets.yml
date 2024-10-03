@@ -3,9 +3,16 @@
    output: ckanext-bne/%(version)s-bne.js
    contents:
      - js/bne.js
+     - vendor/tabulator/tabulator.min.js
    extra:
      preload:
        - base/main
+
+ tabulator-css:
+   filter: cssrewrite
+   output: ckanext-bne/%(version)s-tabulator.css
+   contents:
+    - vendor/tabulator/tabulator.css
 
  bne-css:
    filter: cssrewrite
