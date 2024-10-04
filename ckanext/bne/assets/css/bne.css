@@ -10,7 +10,21 @@
     --bne-border: #d9e0e8;
     --bne-home-text-grey: #a8a6a3;
     --bne-border-radius: 5px;
+    --bne-margin-top: 37px;
 }
+
+@media (max-width:992px){
+    :root{
+        --bne-margin-top: 74px;
+    }
+}
+
+@media (max-width:464px){
+    :root{
+        --bne-margin-top: 111px;
+    }
+}
+
 
 body, h1, h2, h3, h4, h5, h6, a  {
     font-family: 'Roboto', sans-serif;
@@ -24,7 +38,9 @@ body, h1, h2, h3, h4, h5, h6, a  {
   }
 
 /*header*/
+
 .masthead{
+    margin-top: var(--bne-margin-top);
     background-color: var(--bne-dark-blue) ;
     margin-bottom: 6px;
     .logo img {
@@ -279,6 +295,22 @@ body, h1, h2, h3, h4, h5, h6, a  {
                     background-color: rgba(12, 20, 37, 1);
                 }
         }
+        .destacados-media-item:nth-last-child(2){
+            flex-basis:49%;
+        }
+
+        @media (max-width: 1025px ){
+            .destacados-media-item{
+                min-width: 49%;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 767px ){
+            .destacados-media-item{
+                min-width: 98%;
+            }
+        }
 
     }
 }
@@ -286,7 +318,7 @@ body, h1, h2, h3, h4, h5, h6, a  {
 .bne-pills {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     text-decoration: none;
     color: var(--bne-grey);
@@ -394,14 +426,16 @@ body, h1, h2, h3, h4, h5, h6, a  {
 
         .button-container {
             display: flex;
-            justify-content: center;
-            align-items: center;
+            justify-content: space-evenly;
+            align-items:center;
             width: 100%;
+            padding:5px 0px;
+            flex-wrap: wrap;
 
             .btn {
                 display: flex;
                 align-items: center;
-                margin: 0 0.5rem; 
+                margin: 5px 0;
             }
 
             .fa-trash {
@@ -445,37 +479,78 @@ body, h1, h2, h3, h4, h5, h6, a  {
 .bne-api-table-responsive {
     overflow-x: auto;
     border-radius: var(--bne-border-radius);
-    .bne-api-table {
-        border-color: var(--bne-dark-blue);
-        
-        tr:first-child{
-            background-color: var(--bne-blue);
-            th{
-                color: white;
-            }
-        }
-        tr:nth-child(2n) {
-            background-color: var(--bne-grey);
-        }
-        td, th {
-            max-height: 100px;
-            white-space: normal; 
-            overflow-y: scroll;
-        }
-        th {
-            min-width: 150px;
-            white-space: nowrap; 
-            overflow: hidden; 
-            text-overflow: ellipsis; 
+    margin-top: 1rem;
+}
+
+.api-primary{
+    padding: 0;
+    .mt-5{
+        border-top: solid;
+        border-width: 1px;
+        border-color: var(--bne-border);
+        padding: 0 15px;
+    }
+}
+
+
+.bne-api-table-footer{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    
+    div, a{
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 0.5rem;
+        div{
+            margin: 0;
         }
     }
 }
 
-.bne-api-table-footer{
-    display:flex;
-    justify-content: space-between;
-    margin: 1rem 0;
-    div{
-        display: flex;
+
+/* Estilos para responsive de bne-api */
+@media (min-width:767px){
+    .bne-form-toggle{
+        display:none !important;
+        margin: 5px;
     }
 }
+
+@media (max-width:767px) {
+    .bne-form-toggle{
+        display:inline-flex;
+    }
+    .api-primary{
+        width: 100%;
+        .mt-5{
+            padding: 15px;
+        }
+    }
+    .api-secondary{
+        width: 100%
+        
+    }
+    .bne-api-filters{
+        z-index: 2000;
+        position: absolute;
+        background: white;
+        padding: 10px;
+        border-color: var(--bne-border);
+        border-style: solid;
+        border-width: 2px;
+        border-radius: var(--bne-border-radius);
+        width: 100%;
+        max-width: 90%;
+        max-height: 90%;
+        margin: 5%;
+        top: calc(var(--bne-margin-top) + 40px);
+    }
+} 
+
+@media (min-width: 767px) {
+    .bne-api-filters {
+      display: block !important;
+    }
+  }

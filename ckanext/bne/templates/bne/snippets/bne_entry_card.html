@@ -1,4 +1,7 @@
 <div class="container mt-5">    
+    <button class="btn btn-dark bne-form-toggle" type="button" data-bs-toggle="collapse" data-bs-target=".bne-api-filters" aria-expanded="false" aria-controls="bne-form">
+        {{ _('Filters') }}
+    </button>
     {% block bne_table_view %}
         {#{% snippet "bne/snippets/bne_table_view.html", results=results %}#}
         <div class="bne-api-table-responsive" id="bne-api-table">   

@@ -1,4 +1,4 @@
-<div class="bne-api-filters">
+<div class="bne-api-filters collapse" id="bne-form">
     <h2 class="module-heading search-heading">
         <span>
             <i class="fa fa-filter"></i>
@@ -50,6 +50,10 @@
                 {{ _('Clean') }}
                 <i class="fa fa-trash"></i>
             </a>
+
+            <button class="btn btn-dark bne-form-toggle" type="button" data-bs-toggle="collapse" data-bs-target=".bne-api-filters" aria-expanded="false" aria-controls="bne-form">
+                {{ _('Hide filters') }}
+            </button>
         </div>
     </form>
 </div>
