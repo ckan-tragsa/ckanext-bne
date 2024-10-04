@@ -32,6 +32,9 @@ def helper(fn):
 
 @helper
 def bne_get_api_entries():
+    """
+    Retrieves default number of entries to display from config
+    """
     return bne_config.bne_api_entries
 
 @helper
@@ -55,15 +58,12 @@ def bne_get_bne_api_base_url():
     return bne_config.bne_api_base_url
 
 @helper
-def bne_get_showcase_datasets():
-    """
-    Retrieves showcase datasets in the database
-
+def get_number_entries_api():
+    '''
     Returns:
-        dict: datasets
-    """
-    showcase_list = tk.get_action("ckanext_showcase_list")()
-    return showcase_list
+        int: number of entries that should appear in api frontend
+    '''
+    return bne_config.bne_api_entries
 
 @helper
 def bne_get_pages():
@@ -76,20 +76,6 @@ def bne_get_pages():
     page_list = tk.get_action("ckanext_pages_list")(data_dict={'order':'true'})
     #log.warning(page_list)
     return page_list
-
-
-@helper
-def bne_shorten_text(text,n):
-    """
-    shortens text length to n characters
-
-    Returns:
-        str: length limited string
-    """
-    if len(text) > n:
-        text = text[0:n]
-        text += "..>>"
-    return text
 
 def _bne_humanize_field_name(field_name):
     """
@@ -214,13 +200,6 @@ def get_params():
             pass
     return params
 
-@helper
-def get_number_entries_api():
-    '''
-    Returns:
-        int: number of entries that should appear in api frontend
-    '''
-    return bne_config.bne_api_entries
 
 @helper
 def bne_get_params_api(default={'table':'geo'}, rows= get_number_entries_api()):
@@ -264,24 +243,6 @@ def bne_url_for_static_or_external(url:str):
     else:
         return h.url_for_static_or_external('/uploads/showcase/' + url)
 
-@helper 
-def get_next_pages(n:int , count:int , max:int = 3):
-    """
-    Returns list of next pages from current
-    returns:
-        list: number of pages
-    """
-    j = 0
-    out = []
-    for i in range(n+1, int(count/bne_config.bne_api_entries)):
-        j += 1
-        out.append(i)
-        if j == max:
-            return out     
-    return out 
-
-
-
 @helper
 def bne_get_featured_datasets(count=5):
     """
@@ -313,56 +274,3 @@ def bne_get_featured_datasets(count=5):
             dataset[field] = json.loads(value) if value else {}
 
     return datasets
-
-
-## Helpers out of ckanext-surrey
-# TODO test every helper to check if they work correctly in the newer ckan/python version
-# currently unused, migth remove 
-
-
-@helper
-def get_group_list():
-    """
-    Retreives the group list 
-
-    returns:
-        list: List of groups
-    """
-    groups = tk.get_action('group_list')(
-        data_dict={'all_fields': True})
-
-    return groups
-
-
-@helper
-def get_summary_list(num_packages):    
-    """
-    Retreives a summary of n packages ordered by recently added
-
-    returns:
-        list: List of packages
-    """
-    list_without_summary = \
-    tk.get_action('package_search')(data_dict={'rows': num_packages, 'sort': 'metadata_modified desc'})['results']
-    list_with_summary = []
-    for package in list_without_summary:
-        list_with_summary.append(tk.get_action('package_show')(
-            data_dict={'id': package['name'], 'include_tracking': True})
-        )
-    return list_with_summary
-
-@helper
-def get_visit_summary_list(num_packages):
-    """
-    Retreives a summary of packages ordered by times visited
-
-    returns:
-        list: List of packages
-    """
-    list_without_summary = tk.get_action('package_search')(data_dict={'rows':num_packages,'sort':'views_recent desc'})['results']
-    list_with_summary = []
-    for package in list_without_summary:
-        list_with_summary.append(tk.get_action('package_show')(
-        data_dict={'id':package['name'],'include_tracking':True})
-        )
-    return list_with_summary
