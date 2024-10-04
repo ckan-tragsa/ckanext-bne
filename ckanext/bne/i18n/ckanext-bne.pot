@@ -1,80 +1,172 @@
+# Translations template for ckanext-bne.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the ckanext-bne project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
 msgid ""
 msgstr ""
+"Project-Id-Version: ckanext-bne 0.0.1\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-10-04 11:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
 
-msgid "Popular datasets"
+#: ckanext/bne/templates/footer.html:10
+msgid "OPEN DATA"
 msgstr ""
 
-msgid "Popular dataset"
+#: ckanext/bne/templates/footer.html:12
+msgid "Overview"
 msgstr ""
 
-msgid "Most viewed in the last 14 days"
+#: ckanext/bne/templates/footer.html:15
+msgid "Web information"
 msgstr ""
 
-msgid "hit"
+#: ckanext/bne/templates/footer.html:18
+msgid "CKAN API"
 msgstr ""
 
-msgid "hits"
+#: ckanext/bne/templates/footer.html:54
+msgid "Legal notice"
 msgstr ""
 
-msgid "Recently updated"
+#: ckanext/bne/templates/footer.html:57
+msgid "Data protection"
 msgstr ""
 
-msgid "Datasets recently modified"
+#: ckanext/bne/templates/footer.html:60
+msgid "Cookie policy"
 msgstr ""
 
-msgid "Updated on "
+#: ckanext/bne/templates/header.html:5
+msgid "Organizations"
 msgstr ""
 
-msgid "In the News"
+#: ckanext/bne/templates/header.html:11
+msgid "Groups"
 msgstr ""
 
-msgid "News Аrchive"
+#: ckanext/bne/templates/header.html:22
+msgid "Open Data Catalog"
 msgstr ""
 
-# ckanext-contact
-msgid "Contact"
-msgstr ""
-
-msgid "Contact us"
-msgstr ""
-
-msgid "Contact Name"
-msgstr ""
-
-msgid "Your Request"
-msgstr ""
-
-msgid "What do you have to tell us?"
-msgstr ""
-
-msgid "Questions? Comments? We are always glad to hear from you!"
-msgstr ""
-
-msgid "I give my consent to the processing of my personal data by the Biblioteca Nacional de España in order to carry out the requested operation. In the event of refusal to process your data, the procedure cannot be carried out."
-msgstr ""
-
-msgid "I have read and agree to the privacy policy."
-msgstr ""
-
-msgid "Dataset Search"
-msgstr ""
-
-# ckanext/bne/templates/home/layout1.html
-msgid "BNE API"
-msgstr ""
-
-# ckanext/bne/templates/home/layout1.html
-msgid "Featured"
-msgstr ""
-
-# ckanext/bne/templates/header.html
+#: ckanext/bne/templates/header.html:27
 msgid "Information"
 msgstr ""
 
-# ckanext/bne/templates/bne/base.html
+#: ckanext/bne/templates/contact/form.html:6
+#: ckanext/bne/templates/contact/snippets/modal_link.html:6
+#: ckanext/bne/templates/contact/snippets/modal_link.html:8
+#: ckanext/bne/templates/header.html:29
+msgid "Contact"
+msgstr ""
+
+#: ckanext/bne/templates/bne/snippets/bne_entry_card.html:3
+#: ckanext/bne/templates/bne/snippets/bne_form.html:5
+msgid "Filters"
+msgstr ""
+
+#: ckanext/bne/templates/bne/snippets/bne_entry_card.html:20
+msgid "number of entries :"
+msgstr ""
+
+#: ckanext/bne/templates/bne/snippets/bne_entry_card.html:24
+msgid "update"
+msgstr ""
+
+#: ckanext/bne/templates/bne/snippets/bne_form.html:16
+msgid ""
+"The API did not respond with any data. <br><strong>Please check the "
+"status!</strong>"
+msgstr ""
+
+#: ckanext/bne/templates/bne/snippets/bne_form.html:42
+msgid "Dataset Search"
+msgstr ""
+
+#: ckanext/bne/templates/bne/snippets/bne_form.html:50
 msgid "Clean"
 msgstr ""
 
-# ckanext/bne/templates/bne/base.html
-msgid "The API did not respond with any data. <br><strong>Please check the status!</strong>"
+#: ckanext/bne/templates/bne/snippets/bne_form.html:55
+msgid "Hide filters"
 msgstr ""
+
+#: ckanext/bne/templates/contact/form.html:16
+msgid "Contact us"
+msgstr ""
+
+#: ckanext/bne/templates/contact/success.html:18
+msgid "Contact Us"
+msgstr ""
+
+#: ckanext/bne/templates/contact/snippets/form.html:17
+msgid "Questions? Comments? We are always glad to hear from you!"
+msgstr ""
+
+#: ckanext/bne/templates/contact/snippets/form.html:22
+msgid "Contact Name"
+msgstr ""
+
+#: ckanext/bne/templates/contact/snippets/form.html:25
+msgid "Email"
+msgstr ""
+
+#: ckanext/bne/templates/contact/snippets/form.html:29
+msgid "Your Request"
+msgstr ""
+
+#: ckanext/bne/templates/contact/snippets/form.html:31
+msgid "What do you have to tell us?"
+msgstr ""
+
+#: ckanext/bne/templates/contact/snippets/form.html:33
+msgid ""
+"I give my consent to the processing of my personal data by the Biblioteca "
+"Nacional de España in order to carry out the requested operation. In the "
+"event of refusal to process your data, the procedure cannot be carried out."
+msgstr ""
+
+#: ckanext/bne/templates/contact/snippets/form.html:35
+msgid "I have read and agree to the privacy policy."
+msgstr ""
+
+#: ckanext/bne/templates/contact/snippets/form.html:44
+msgid "Submit"
+msgstr ""
+
+#: ckanext/bne/templates/home/layout1.html:6
+msgid "BNE API"
+msgstr ""
+
+#: ckanext/bne/templates/home/layout1.html:14
+msgid "Featured"
+msgstr ""
+
+#: ckanext/bne/templates/home/snippets/featured_popular.html:9
+msgid "Popular datasets"
+msgstr ""
+
+#: ckanext/bne/templates/home/snippets/featured_popular.html:10
+msgid "Datasets most seen in the last 14 days"
+msgstr ""
+
+#: ckanext/bne/templates/home/snippets/featured_recent.html:9
+msgid "Recently updated"
+msgstr ""
+
+#: ckanext/bne/templates/home/snippets/featured_recent.html:10
+msgid "Datasets recently modified"
+msgstr ""
+
+#: ckanext/bne/templates/home/snippets/featured_recent.html:19
+msgid "Updated on "
+msgstr ""
+
