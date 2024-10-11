@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-04 11:33+0000\n"
+"POT-Creation-Date: 2024-10-11 14:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: es\n"
@@ -70,10 +70,290 @@ msgstr "Información"
 msgid "Contact"
 msgstr "Contacto"
 
+#: ckanext/bne/templates/bne/api_info.html:6
+msgid "API"
+msgstr ""
+
+#: ckanext/bne/templates/bne/api_info.html:8
+msgid ""
+"The National Library's Open Data Portal offers a REST API to access the "
+"data catalog, as well as to directly obtain all the information of a "
+"dataset and its resources."
+msgstr ""
+
+#: ckanext/bne/templates/bne/api_info.html:10
+msgid ""
+"This API is the one implemented by CKAN. The following list includes some"
+" examples of API usage:"
+msgstr ""
+
+#: ckanext/bne/templates/bne/api_info.html:12
+#, fuzzy
+#| msgid "Open Data Catalog"
+msgid "Simple data catalog: "
+msgstr "Catalogo de Datos Abiertos"
+
+#: ckanext/bne/templates/bne/api_info.html:13
+#, fuzzy
+#| msgid "Open Data Catalog"
+msgid "Extended data catalog: "
+msgstr "Catalogo de Datos Abiertos"
+
+#: ckanext/bne/templates/bne/api_info.html:14
+msgid "List of groups: "
+msgstr ""
+
+#: ckanext/bne/templates/bne/api_info.html:15
+msgid "List of tags: "
+msgstr ""
+
+#: ckanext/bne/templates/bne/api_info.html:16
+msgid "All the information of a dataset: "
+msgstr ""
+
+#: ckanext/bne/templates/bne/api_info.html:19
+msgid ""
+"All CKAN API Rest documentation is available at the following address: "
+"http://docs.ckan.org/en/latest/api/"
+msgstr ""
+
+# ckanext/bne/templates/header.html
+# | msgid "Information"
+#: ckanext/bne/templates/bne/informacion.html:7
+#, fuzzy
+#| msgid "Web information"
+msgid "Platform Information"
+msgstr "Información"
+
+#: ckanext/bne/templates/bne/informacion.html:8
+msgid "CKAN Platform"
+msgstr ""
+
+#: ckanext/bne/templates/bne/informacion.html:10
+msgid ""
+"Datos Abiertos runs on an open source tool called <a "
+"href='http://ckan.org'>CKAN</a> which is a world leading\n"
+"        data catalog platform. CKAN has been designed by the Open "
+"Knowledge Foundation (OKF)."
+msgstr ""
+
+#: ckanext/bne/templates/bne/informacion.html:13
+msgid ""
+"CKAN is a complete out-of-the-box software solution that makes data "
+"accessible and reusable by providing tools\n"
+"        for publishing, sharing, finding and using data (including data "
+"warehousing and provision of robust data APIs)."
+msgstr ""
+
+#: ckanext/bne/templates/bne/informacion.html:17
+msgid ""
+"CKAN is aimed at data providers (national and regional governments, "
+"infomediaries, companies and organizations)\n"
+"        that want to make their data open and available."
+msgstr ""
+
+#: ckanext/bne/templates/bne/informacion.html:20
+msgid ""
+"CKAN is used by governments and user groups worldwide and manages a "
+"variety of official and community data\n"
+"        portals, including portals for local, national and international "
+"governments such as data.gov.uk from the UK,\n"
+"        publicdata.eu from the European Union; dados.gov.br from Brazil; "
+"as well as government portals from Denmark and\n"
+"        the Netherlands, as well as city and municipal sites in the US, "
+"UK, Argentina, Finland and elsewhere."
+msgstr ""
+
+#: ckanext/bne/templates/bne/informacion.html:28
+msgid "Functionality review: "
+msgstr ""
+
+#: ckanext/bne/templates/bne/informacion.html:30
+msgid "Built on CKAN "
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:6
+msgid "What is open data?"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:8
+msgid ""
+"Open data is data that can be freely used, modified and shared by anyone "
+"for any purpose."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:10
+msgid ""
+"Public administrations have the obligation to encourage their use and "
+"provide the best conditions for the data\n"
+"        they generate in the exercise of their functions to be used by "
+"citizens to generate new knowledge, services or\n"
+"        entrepreneurship."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:13
+msgid "Open data in the National Library of Spain"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:15
+msgid ""
+"The Biblioteca Nacional de España massively generates standardized, "
+"interoperable and standardized data: its\n"
+"        bibliographic and authority catalogs are its main tool and source"
+" of information, and the BNE has been making\n"
+"        them available for download under open and reusable licenses for "
+"years. It also maintains and publishes\n"
+"        standardized vocabularies, statistics, bibliography, "
+"directories... or the texts derived from the digitization\n"
+"        processes of its collections."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:21
+msgid ""
+"Since 2015, the Biblioteca Nacional de España has included among its "
+"strategic lines the promotion of the reuse\n"
+"        of its data. As part of the BNElab project, all the open data "
+"files generated by the BNE were analyzed,\n"
+"        segmented and converted to open and reusable formats such as "
+"JSON, CSV, TXT, ODS and XML, and published on\n"
+"        datos.gob, while a line of collaboration with communities of "
+"potential reusers was initiated to promote the use\n"
+"        of these datasets in all possible sectors (natural language "
+"processing, digital humanities, tourism, artificial\n"
+"        intelligence, big data..."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:28
+msgid ""
+"With this new data portal, the Biblioteca Nacional de España is taking "
+"another step forward in promoting the use\n"
+"        of its digital resources, expanding the possibilities for access,"
+" exploitation and exchange with reusers. This\n"
+"        is a project under construction, in which services and "
+"functionalities will be gradually added. We count on your\n"
+"        collaboration!"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:33
+msgid "What is a dataset?"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:35
+msgid ""
+"It is a collection of related data that can be reused (either on its own "
+"or mixed with other data) to create\n"
+"        services of interest to citizens, companies or organizations."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:37
+#, fuzzy
+#| msgid "Popular datasets"
+msgid "How are datasets used?"
+msgstr "Conjuntos de datos más populares"
+
+#: ckanext/bne/templates/bne/resumen.html:39
+msgid "To reuse data you must take into account:"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:40
+msgid "License for use."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:42
+msgid ""
+"The datasets presented here are offered under open property licenses, "
+"which allow their\n"
+"            redistribution, reuse and exploitation for commercial "
+"purposes."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:45
+msgid ""
+"However, there are some differences depending on the type of data, so in "
+"each file we detail the\n"
+"            terms of use, which are always oriented to its reuse."
+msgstr ""
+
+# ckanext/bne/templates/header.html
+# | msgid "Information"
+#: ckanext/bne/templates/bne/resumen.html:48
+#, fuzzy
+#| msgid "Web information"
+msgid "Technical information"
+msgstr "Información"
+
+#: ckanext/bne/templates/bne/resumen.html:50
+msgid ""
+"The data portal offers information for different reuser profiles "
+"(programmers or advanced reusers,\n"
+"        journalists, researchers, general public, etc.). Therefore, the "
+"data is displayed in different formats,\n"
+"        which serve different uses and needs and require different levels"
+" of knowledge and handling of these\n"
+"        large data files."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:54
+msgid "What is a derived application of the public data displayed?"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:56
+msgid ""
+"A derived application is any service obtained from the reuse of public "
+"data and that provides added value\n"
+"        for citizens. An example could be a mobile application that "
+"visualizes the city's municipal facilities."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:59
+msgid "Is it possible to expose personal data?"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:61
+msgid ""
+"The data that is published does not provide information that can be used "
+"to identify non-public persons."
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:63
+msgid "How are the datasets to be published selected or prioritized?"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:65
+msgid ""
+"All the large datasets generated by the BNE in the exercise of its "
+"functions have been selected (mainly\n"
+"        those of the bibliographic catalog and authorities, but also "
+"other types of data, such as vocabularies,\n"
+"        web collection data, bibliography...), and we have treated them "
+"to make them more easily accessible and\n"
+"        workable. We are still in the process of adding new sets, contact"
+" BNElab if you have any proposals!"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:69
+msgid "Can I make suggestions?"
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:71
+msgid ""
+"Yes, please! New datasets, application and usage possibilities... any "
+"suggestion, comment or input is\n"
+"        very valuable to us. "
+msgstr ""
+
+#: ckanext/bne/templates/bne/resumen.html:73
+msgid "Please contact the BNElab team here"
+msgstr ""
+
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:3
 #: ckanext/bne/templates/bne/snippets/bne_form.html:5
 msgid "Filters"
 msgstr "Filtros"
+
+#: ckanext/bne/templates/bne/snippets/bne_entry_card.html:18
+msgid "Raw data (api)"
+msgstr ""
 
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:20
 msgid "number of entries :"
@@ -165,28 +445,6 @@ msgstr "API BNE"
 msgid "Featured"
 msgstr "Destacados"
 
-#: ckanext/bne/templates/home/snippets/featured_popular.html:9
-msgid "Popular datasets"
-msgstr "Conjuntos de datos más populares"
-
-# | msgid "Most viewed in the last 14 days"
-#: ckanext/bne/templates/home/snippets/featured_popular.html:10
-#, fuzzy
-msgid "Datasets most seen in the last 14 days"
-msgstr "Los más vistos en los últimos 14 días"
-
-#: ckanext/bne/templates/home/snippets/featured_recent.html:9
-msgid "Recently updated"
-msgstr "Últimas actualizaciones"
-
-#: ckanext/bne/templates/home/snippets/featured_recent.html:10
-msgid "Datasets recently modified"
-msgstr "Conjuntos de datos modificados recientemente"
-
-#: ckanext/bne/templates/home/snippets/featured_recent.html:19
-msgid "Updated on "
-msgstr "Actualizado el día "
-
 #~ msgid "Popular dataset"
 #~ msgstr "Conjunto de datos popular"
 
@@ -205,4 +463,17 @@ msgstr "Actualizado el día "
 # | msgid "Filters"
 #~ msgid "filters"
 #~ msgstr "Filtros"
+
+# | msgid "Most viewed in the last 14 days"
+#~ msgid "Datasets most seen in the last 14 days"
+#~ msgstr "Los más vistos en los últimos 14 días"
+
+#~ msgid "Recently updated"
+#~ msgstr "Últimas actualizaciones"
+
+#~ msgid "Datasets recently modified"
+#~ msgstr "Conjuntos de datos modificados recientemente"
+
+#~ msgid "Updated on "
+#~ msgstr "Actualizado el día "
 
