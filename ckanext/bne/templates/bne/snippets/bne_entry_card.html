@@ -15,7 +15,7 @@
 
     {% block aditional_info %}{# modify with caution, js uses the innerHTML of these elements as variables #}
         <div class = "bne-api-table-footer">
-            <a id="api-url" href="{{h.generate_api_url(h.bne_get_params_api())}}">api url</a>
+            <a id="api-url" class="btn btn-info" href="{{h.generate_api_url(h.bne_get_params_api())}}" target="_blank">{{_("Raw data (api)")}}</a>
 
             <div> {{_('number of entries :')}}<div id="nentries">0</div></div>
 

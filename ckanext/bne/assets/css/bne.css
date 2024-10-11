@@ -34,7 +34,7 @@ body, h1, h2, h3, h4, h5, h6, a  {
 .btn {
     background-image: none;
     box-shadow: none;
-    border-radius: 15px;
+    border-radius: var(--bne-border-radius);
   }
 
 /*header*/
@@ -449,6 +449,8 @@ body, h1, h2, h3, h4, h5, h6, a  {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 2rem;
+    
     input, div{
         border: 1px;
         border-style: solid;
@@ -504,7 +506,18 @@ body, h1, h2, h3, h4, h5, h6, a  {
         flex-wrap: nowrap;
         margin: 0.5rem;
         div{
+            display: flex;
             margin: 0;
+        }
+
+    }        
+    div:first-child, a:first-child{
+        margin-left: 0;
+    }
+    a:last-child, div:last-child{
+        margin-right: 0;
+        :nth-child(n){
+            margin: 0 0 0 3px ;
         }
     }
 }
