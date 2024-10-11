@@ -1,30 +1,36 @@
 from ckan.lib.plugins import DefaultTranslation
-import ckan.plugins as plugins
-import ckan.plugins.toolkit as toolkit
+import ckan.plugins as p
 
-import ckanext.bne.config as bne_config
 from ckanext.bne import helpers, validators, blueprint
 
 import logging
 
+try:
+    config_declarations = p.toolkit.blanket.config_declarations
+except AttributeError:
+    # CKAN 2.9 does not have config_declarations.
+    # Remove when dropping support.
+    def config_declarations(cls):
+        return cls
+
 log = logging.getLogger(__name__)
 
-
-class BnePlugin(plugins.SingletonPlugin,  DefaultTranslation):
-    plugins.implements(plugins.IConfigurer)
-    plugins.implements(plugins.ITemplateHelpers)
-    plugins.implements(plugins.ITranslation)
-    plugins.implements(plugins.IValidators)
-    plugins.implements(plugins.IBlueprint)
+@config_declarations
+class BnePlugin(p.SingletonPlugin,  DefaultTranslation):
+    p.implements(p.IConfigurer)
+    p.implements(p.ITemplateHelpers)
+    p.implements(p.ITranslation)
+    p.implements(p.IValidators)
+    p.implements(p.IBlueprint)
 
     # IConfigurer
     def update_config(self, config_):
-        toolkit.add_template_directory(config_, 'templates')
-        toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic',
+        p.toolkit.add_template_directory(config_, 'templates')
+        p.toolkit.add_public_directory(config_, 'public')
+        p.toolkit.add_resource('fanstatic',
             'bne')
         
-        toolkit.add_resource("assets", "ckanext-bne")
+        p.toolkit.add_resource("assets", "ckanext-bne")
         
     # Blueprints
     def get_blueprint(self):

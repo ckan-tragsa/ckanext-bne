@@ -35,7 +35,7 @@ def bne_get_api_entries():
     """
     Retrieves default number of entries to display from config
     """
-    return bne_config.bne_api_entries
+    return p.toolkit.config.get('ckanext.bne.bne_api_entries')
 
 @helper
 def bne_get_bne_base_url():
@@ -45,7 +45,7 @@ def bne_get_bne_base_url():
     Returns:
         str: The URL.
     """
-    return bne_config.bne_base_url
+    return p.toolkit.config.get('ckanext.bne.bne_url')
 
 @helper 
 def bne_get_bne_api_base_url():
@@ -55,7 +55,7 @@ def bne_get_bne_api_base_url():
     Returns:
         str: The URL.
     """
-    return bne_config.bne_api_base_url
+    return p.toolkit.config.get('ckanext.bne.bne_api_base_url')
 
 @helper
 def get_number_entries_api():
@@ -63,7 +63,7 @@ def get_number_entries_api():
     Returns:
         int: number of entries that should appear in api frontend
     '''
-    return bne_config.bne_api_entries
+    return p.toolkit.config.get('ckanext.bne.bne_api_entries')
 
 @helper
 def bne_get_pages():
@@ -128,9 +128,9 @@ def generate_api_url(params, fields=False):
     params2 = params.copy()
     params2.pop('nentries', None)
     if fields:
-        call_url = bne_config.bne_api_base_url + "fields/" + params2.pop('table') + "?"
+        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url')+ "fields/" + params2.pop('table') + "?"
     else:
-        call_url = bne_config.bne_api_base_url + params2.pop('table') + "?"
+        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url')+ params2.pop('table') + "?"
     for key in params2:
         call_url += key + "=" + params2[key] + '&'
     return call_url

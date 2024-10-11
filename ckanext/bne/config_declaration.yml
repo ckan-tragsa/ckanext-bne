@@ -1,0 +1,24 @@
+version: 1
+groups:
+  - annotation: Config settings
+    options:
+      - key: ckanext.bne.bne_url
+        default: https://www.bne.es/
+        validators:
+        description: |
+          URL of BNE portal
+        required: false
+
+      - key: ckanext.bne.bne_api_base_url
+        default: http://172.17.9.151:3000/api/
+        validators:
+        description: |
+          URL of BNE API
+        required: false
+
+      - key: ckanext.bne.bne_api_entries
+        default: 20
+        type: int
+        description: |
+          Size of API entries
+        required: false
