@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ckanext-bne 0.0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2024-10-11 14:59+0000\n"
+"POT-Creation-Date: 2024-10-14 09:31+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -343,7 +343,7 @@ msgid "number of entries :"
 msgstr ""
 
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:24
-msgid "update"
+msgid "Update"
 msgstr ""
 
 #: ckanext/bne/templates/bne/snippets/bne_form.html:16
