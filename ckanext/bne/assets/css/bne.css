@@ -13,18 +13,6 @@
     --bne-margin-top: 37px;
 }
 
-@media (max-width:992px){
-    :root{
-        --bne-margin-top: 74px;
-    }
-}
-
-@media (max-width:464px){
-    :root{
-        --bne-margin-top: 111px;
-    }
-}
-
 
 body, h1, h2, h3, h4, h5, h6, a  {
     font-family: 'Roboto', sans-serif;
@@ -318,11 +306,10 @@ body, h1, h2, h3, h4, h5, h6, a  {
 .bne-pills {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     text-decoration: none;
     color: var(--bne-grey);
-    font-size: 0.9rem;
     cursor: pointer;
 
     .pill-card {
@@ -332,7 +319,7 @@ body, h1, h2, h3, h4, h5, h6, a  {
         border-width: 1px;
         border-color: var(--bne-border);
         border-radius: var(--bne-border-radius);
-        margin: 10px;
+        margin: 5px;
 
         a {
             color: var(--bne-home-text-grey);
@@ -567,3 +554,15 @@ body, h1, h2, h3, h4, h5, h6, a  {
       display: block !important;
     }
   }
+
+  .spinner-border {
+    display: inline-block;
+    width: 2.5rem;
+    height: 2.5rem;
+    vertical-align: -0.125em;
+    border: 0.25em solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: 0.75s linear infinite spinner-border;
+    color: #003164;
+}
