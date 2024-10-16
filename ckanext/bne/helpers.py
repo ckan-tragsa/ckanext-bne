@@ -1,6 +1,7 @@
 import logging
 import re
 import json
+from functools import lru_cache
 
 from ckan import model
 import ckan.logic as logic
@@ -8,7 +9,6 @@ import ckan.lib.helpers as h
 import ckan.plugins as p
 import ckan.plugins.toolkit as tk
 import requests as req
-import random 
 from urllib.parse import urlparse, unquote
 
 import ckanext.bne.config as bne_config
@@ -64,6 +64,21 @@ def get_number_entries_api():
         int: number of entries that should appear in api frontend
     '''
     return p.toolkit.config.get('ckanext.bne.bne_api_entries')
+    
+@helper 
+def bne_get_pills():
+    """
+    gets table fields and sets up and gives it a color within a given range defined in config.py
+
+    Returns:
+        dict: dictionary with table name, title, and a pseudorandom asigned color 
+    """
+    pill_config = json.loads(p.toolkit.config.get('ckanext.bne.bne_api_mapping'))
+    out = {}
+    for key in pill_config:
+        out[key] =  {'table':pill_config[key]['table'],
+                     'icon':pill_config[key]['icon']}
+    return out
 
 @helper
 def bne_get_pages():
@@ -114,28 +129,36 @@ def bne_standarize_entry(entry):
     return entry_std
 
 @helper 
-def generate_api_url(params, fields=False):
+def generate_api_url(params, fields=False, rows=None, page=None):
     """
-    generates API URL from params
+    Generates API URL from params.
 
     Args:
         params (dict): The parameters to be sent to the API.
         fields (bool): If True, returns table fields. Defaults to False.
+        rows (int, optional): The number of rows to limit the query. Defaults to None.
+        page (int, optional): The page number for pagination. Defaults to None.
 
     Returns:
-        str: a url 
+        str: A URL.
     """
     params2 = params.copy()
     params2.pop('nentries', None)
+    
     if fields:
-        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url')+ "fields/" + params2.pop('table') + "?"
+        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url') + "fields/" + params2.pop('table') + "?"
     else:
-        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url')+ params2.pop('table') + "?"
+        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url') + params2.pop('table') + "?"
+    
     for key in params2:
         call_url += key + "=" + params2[key] + '&'
+    
+    if rows is not None and page is not None:
+        call_url += f"rowid={rows}-{page}"
+    
     return call_url
 
-
+@lru_cache(maxsize=128)
 @helper
 def bne_call_api(params, fields=False):
     """
@@ -183,21 +206,25 @@ def bne_call_api(params, fields=False):
 
 @helper
 def get_params():
-    '''
+    """
+    Extracts query parameters from the current URL.
+
     Returns:
-        get query param data
-    '''
+        dict: A dictionary containing the query parameters.
+    """
     params = {}
     
     for entry in unquote(urlparse(h.current_url()).query).split('&'):
-        #catch and ignore any exception while parsing the query params
-        #app should not crash after inputing a wrong format
         try:
             log.warning(entry)
             key_pair = entry.split('=')
-            params[key_pair[0]] = (key_pair[1])
-        except:
-            pass
+            if len(key_pair) == 2:
+                params[key_pair[0]] = key_pair[1]
+        except ValueError as e:
+            log.error(f"ValueError while parsing entry '{entry}': {e}")
+        except Exception as e:
+            log.error(f"Unexpected error while parsing entry '{entry}': {e}")
+    
     return params
 
 
@@ -216,21 +243,6 @@ def bne_get_params_api(default={'table':'geo'}, rows= get_number_entries_api()):
     return params
 
 
-    
-@helper 
-def bne_get_pills():
-    """
-    gets table fields and sets up and gives it a color within a given range defined in config.py
-
-    Returns:
-        dict: dictionary with table name, title, and a pseudorandom asigned color 
-    """
-    out = {}
-    for key in bne_config.bne_api_tables:
-        random.seed(key)
-        out[key] =  {'table':bne_config.bne_api_tables[key],
-                     'icon':bne_config.bne_api_pill_style[key]['icon']}
-    return out
 
 @helper 
 def bne_url_for_static_or_external(url:str):

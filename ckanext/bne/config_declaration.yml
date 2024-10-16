@@ -10,7 +10,7 @@ groups:
         required: false
 
       - key: ckanext.bne.bne_api_base_url
-        default: http://172.17.9.151:3000/api/
+        default: http://www.example.com/api/
         validators:
         description: |
           URL of BNE API
@@ -22,3 +22,10 @@ groups:
         description: |
           Size of API entries
         required: false
+      
+      - key: ckanext.bne.bne_api_mapping
+        default: '{"Geográfico":{"table":"geo","icon":"fas fa-atlas","color":"#003164"},"Persona":{"table":"per","icon":"fas fa-user","color":"#003164"},"Monografías modernas":{"table":"mon","icon":"fas fa-book","color":"#003164"},"Monografías antiguas":{"table":"moa","icon":"fas fa-scroll","color":"#003164"},"Entidades":{"table":"ent","icon":"fas fa-building","color":"#003164"},"Manuscritos":{"table":"mss","icon":"fas fa-pen-nib","color":"#003164"},"Prensa y Revista":{"table":"ser","icon":"fas fa-newspaper","color":"#003164"},"Partituras":{"table":"par","icon":"fas fa-music","color":"#003164"},"Recursos electrónicos":{"table":"ele","icon":"fas fa-floppy-disk","color":"#003164"},"Materiales mixtos":{"table":"mam","icon":"fas fa-file","color":"#003164"},"Mapas":{"table":"map","icon":"fas fa-location-dot","color":"#003164"},"Filminas y Transparencias":{"table":"grp","icon":"fas fa-photo-film","color":"#003164"},"Dibujos, Carteles y Fotografias":{"table":"gra","icon":"fas fa-paintbrush","color":"#003164"},"Grabaciones sonoras":{"table":"son","icon":"fas fa-solid fa-record-vinyl","color":"#003164"},"Videograbaciones":{"table":"vid","icon":"fas fa-video","color":"#003164"},"Kit multimedia":{"table":"kit","icon":"fas fa-play","color":"#003164"},"Congresos":{"table":"con","icon":"fas fa-landmark","color":"#003164"},"Genero y Forma":{"table":"gen","icon":"fas fa-folder-tree","color":"#003164"},"Materia":{"table":"mat","icon":"fas fa-building-columns","color":"#003164"},"Titulos":{"table":"tit","icon":"fas fa-graduation-cap","color":"#003164"}}'
+        description: | 
+          Minified JSON with the api database mapping
+        required: false
+        
