@@ -9,8 +9,8 @@
         {{ h.csrf_input() }}
         {% set parameters = h.bne_get_params_api() %}
         {% set fields = h.bne_call_api(params={'table': parameters.table}, fields=True)['fields'] %}
+        {% if fields | length == 0 %}
 
-        {% if nentries == 0 %}
             {% block api_warning %}
                 {% set quote_content %}
                     {% trans %}
@@ -45,7 +45,7 @@
     
             <a
                 class="btn btn-danger d-flex align-items-center"
-                href="{{ h.url_for('bne.base') + '?table=' + parameters.table + '&page=0' }}"
+                href="{{ h.url_for('bne.base') + '?table=' + parameters.table }}"
             >
                 {{ _('Clean') }}
                 <i class="fa fa-trash"></i>

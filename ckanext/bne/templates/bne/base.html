@@ -2,7 +2,7 @@
 
 {% block primary %}
 {% set params = h.bne_get_params_api() %}
-{% if 'nentries' not in params %}
+{#{% if 'nentries' not in params %}
     {% do params.update({'count':'1'}) %}
     {% set api_response = h.bne_call_api(params) %}
     {% if api_response and api_response.data and api_response.data|length > 0 %}
@@ -10,7 +10,7 @@
     {% else %}
         {% do params.update({'nentries': 0}) %}
     {% endif %}
-{% endif %}
+{% endif %}#}
 {% snippet "bne/snippets/bne_api_pills.html" %}
 <aside class="secondary col-sm-3 api-secondary" >
     {% snippet "bne/snippets/bne_form.html", params=params, nentries=params.nentries %}

@@ -1,3 +1,6 @@
+{% set rows_limit = 20 %}
+{% set page = 1 %}
+
 <div class="container mt-5">    
     <button class="btn btn-dark bne-form-toggle" type="button" data-bs-toggle="collapse" data-bs-target=".bne-api-filters" aria-expanded="false" aria-controls="bne-form">
         {{ _('Filters') }}
@@ -15,13 +18,13 @@
 
     {% block aditional_info %}{# modify with caution, js uses the innerHTML of these elements as variables #}
         <div class = "bne-api-table-footer">
-            <a id="api-url" class="btn btn-info" href="{{h.generate_api_url(h.bne_get_params_api())}}" target="_blank">{{_("Raw data (api)")}}</a>
+            <a id="api-url" class="btn btn-info" href="{{h.generate_api_url(h.bne_get_params_api(),rows=rows_limit,page=page)}}" target="_blank" title="{{ _('Limit to {rows} first rows').format(rows=rows_limit) }}">{{_("Raw data - API BNE")}}</a>
 
-            <div> {{_('number of entries :')}}<div id="nentries">0</div></div>
+            <div> {{_('Number of entries :')}}<div id="nentries">0</div></div>
 
             <div>
                 <input id="bne-rows" type="number" value="{{h.bne_get_api_entries()}}" min="5" max="50">
-                <button onclick="updateVars()" class="btn btn-secondary btn-sm">{{_("Update")}}</button>
+                <button onclick="updateVars()" class="btn btn-secondary">{{_("Update")}}</button>
             </div>
         </div>
     {% endblock %}
