@@ -1,0 +1,11 @@
+<div class="bne-pills">
+    {% set pills = h.bne_get_pills()%}
+    {% for pill in pills %}
+        <div class=pill-card onclick="location.href = '{{h.url_for('bne.base')+'?table='+pills[pill].table}}'">
+            <div class="pill-card-icon" style="background-color: {{pills[pill].color}};">
+                <i class="{{pills[pill].icon}}"></i>                
+            </div>  
+            <a>{{pill}}</a>
+        </div>  
+    {% endfor %}
+</div>

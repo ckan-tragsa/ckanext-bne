@@ -1,0 +1,59 @@
+<div class="bne-api-filters collapse" id="bne-form">
+    <h2 class="module-heading search-heading">
+        <span>
+            <i class="fa fa-filter"></i>
+            {{ _('Filters') }}
+        </span>
+    </h2>      
+    <form id="inputForm" class="bne-api-form-container">
+        {{ h.csrf_input() }}
+        {% set parameters = h.bne_get_params_api() %}
+        {% set fields = h.bne_call_api(params={'table': parameters.table}, fields=True)['fields'] %}
+        {% if fields | length == 0 %}
+
+            {% block api_warning %}
+                {% set quote_content %}
+                    {% trans %}
+                    The API did not respond with any data. <br><strong>Please check the status!</strong>
+                    {% endtrans %}
+                {% endset %}
+                {% snippet "schemingdcat/snippets/quote_alerts.html", alert_type='warning', content=quote_content %}
+            {% endblock %}
+        {% endif %}
+
+        {% for entry in fields %}
+            {% if entry[0:2] != 't_' %}
+                <div class="input-wrapper">
+                    <input
+                        type="text"
+                        id="{{ entry }}"
+                        placeholder="{{ entry }}"
+                        value="{{ parameters[entry] }}"
+                        class="form-control custom-input"
+                    />
+                </div>
+            {% endif %}
+        {% endfor %}
+    
+        <div class="module-heading button-container">
+            <input
+                type="button"
+                onclick="formOnClick('{{h.bne_get_bne_api_base_url()}}')"
+                value="{{ _('Dataset Search') }}"
+                class="btn btn-primary"
+            />
+    
+            <a
+                class="btn btn-danger d-flex align-items-center"
+                href="{{ h.url_for('bne.base') + '?table=' + parameters.table }}"
+            >
+                {{ _('Clean') }}
+                <i class="fa fa-trash"></i>
+            </a>
+
+            <button class="btn btn-dark bne-form-toggle" type="button" data-bs-toggle="collapse" data-bs-target=".bne-api-filters" aria-expanded="false" aria-controls="bne-form">
+                {{ _('Hide filters') }}
+            </button>
+        </div>
+    </form>
+</div>

@@ -48,6 +48,18 @@ To temporary patch the CKAN configuration for the duration of a test you can use
         pass
 """
 import ckanext.bne.plugin as plugin
+from ckan.tests import helpers
+import pytest
 
-def test_plugin():
-    pass
+@pytest.mark.usefixtures("clean_db", "with_plugins")
+class TestBNEPlugin:
+    def test_get_helpers(self):
+        plugin_instance = plugin.BnePlugin()
+        helpers = plugin_instance.get_helpers()
+        assert isinstance(helpers, dict)
+
+    def test_get_blueprint(self):
+        plugin_instance = plugin.BnePlugin()
+        blueprints = plugin_instance.get_blueprint()
+        assert isinstance(blueprints, list)
+        assert len(blueprints) > 0

@@ -1,0 +1,22 @@
+{% extends "page.html" %}
+
+{% block content %}
+
+<div id="content" class="container">
+    <h1>{{_("API")}}</h1>
+
+    <p>{{_("The National Library's Open Data Portal offers a REST API to access the data catalog, as well as to directly obtain all the information of a dataset and its resources.")}}</p>
+
+    <p>{{_("This API is the one implemented by CKAN. The following list includes some examples of API usage:")}}</p>
+        <ul>
+            <li>{{_("Simple data catalog: ")}}<a href="{{h.url_for('api.action',ver=3,logic_function='package_list',_external=True)}}">{{h.url_for('api.action',ver=3,logic_function='package_list',_external=True)}}</a></li>
+            <li>{{_("Extended data catalog: ")}}<a href="{{h.url_for('api.action',ver=3,logic_function='package_search',_external=True)}}">{{h.url_for('api.action',ver=3,logic_function='package_search',_external=True)}}</a></li>
+            <li>{{_("List of groups: ")}}<a href="{{h.url_for('api.action',ver=3,logic_function='group_list',_external=True)}}">{{h.url_for('api.action',ver=3,logic_function='group_list',_external=True)}}</a></li>
+            <li>{{_("List of tags: ")}}<a href="{{h.url_for('api.action',ver=3,logic_function='tag_list',_external=True)}}">{{h.url_for('api.action',ver=3,logic_function='tag_list',_external=True)}}</a></li>
+            <li>{{_("All the information of a dataset: ")}}<a href="{{h.url_for('api.action',ver=3,logic_function='package_show',_external=True)}}?id=catalogo-bibliografico-filminas-transparencias">{{h.url_for('api.action',ver=3,logic_function='package_show',_external=True)}}?id=catalogo-bibliografico-filminas-transparencias</a></li>
+        </ul>
+    <br>
+    <p>{{_("All CKAN API Rest documentation is available at the following address: http://docs.ckan.org/en/latest/api/")}}</p>
+</div>
+
+{% endblock %}

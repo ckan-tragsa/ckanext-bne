@@ -1,0 +1,35 @@
+{% extends "page.html" %}
+
+{% block content %}
+
+<div id="content" class="container">
+
+    <h1>{{ _("Platform Information") }}</h1>
+    <h2>{{ _("CKAN Platform") }}</h2>
+
+    <p>{{ _("Datos Abiertos runs on an open source tool called <a href='http://ckan.org'>CKAN</a> which is a world leading
+        data catalog platform. CKAN has been designed by the Open Knowledge Foundation (OKF).") }}</p>
+
+    <p>{{ _("CKAN is a complete out-of-the-box software solution that makes data accessible and reusable by providing tools
+        for publishing, sharing, finding and using data (including data warehousing and provision of robust data APIs).") }}
+    </p>
+
+    <p>{{ _("CKAN is aimed at data providers (national and regional governments, infomediaries, companies and organizations)
+        that want to make their data open and available.") }}
+    </p>
+    <p>{{ _("CKAN is used by governments and user groups worldwide and manages a variety of official and community data
+        portals, including portals for local, national and international governments such as data.gov.uk from the UK,
+        publicdata.eu from the European Union; dados.gov.br from Brazil; as well as government portals from Denmark and
+        the Netherlands, as well as city and municipal sites in the US, UK, Argentina, Finland and elsewhere.") }}
+    </p>
+
+    <p>CKAN: <a href="http://ckan.org/">http://ckan.org/</a>
+    </p>
+    <p>{{ _("Functionality review: ") }}<a href="http://ckan.org/features/">http://ckan.org/features/</a>
+    </p>
+    <p>{{ _("Built on CKAN ") }}{{h.ckan_version()}}
+    </p>
+</div>
+
+{% endblock %}
+

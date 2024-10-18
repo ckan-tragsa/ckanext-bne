@@ -1,0 +1,18 @@
+{% set truncate = truncate or 300 %}
+{% set truncate_title = truncate_title or 80 %}
+
+<div class="row fondodestacados">
+	<div class="destacados-media-grid" id='ulShowcase'>
+		{% for showcase in h.bne_get_featured_datasets() %}
+		{% set title = h.scheming_language_text(showcase.title_translated)|truncate(truncate_title) %}
+
+			<div class="destacados-media-item">
+				<img src="{{ h.bne_url_for_static_or_external(showcase.featured_image)}}" alt="{{ title }}" class="destacados-media-image" >
+				<h3 class='destacados-media-heading'><a href="{{ h.url_for('dataset.read', id=showcase.name) }}">{{ title }}</a></h3>
+				<a href="{{ h.url_for('dataset.read', id=showcase.name) }}" title="Ver {{ title }}" class='destacados-media-view' target='ckan'></a>
+
+ 				<p>{{ h.markdown_extract( h.scheming_language_text(showcase.notes_translated), extract_length=(truncate)) }}</p>
+			</div>
+		{% endfor %}
+	</div>
+</div>

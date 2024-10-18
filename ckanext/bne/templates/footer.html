@@ -1,0 +1,74 @@
+{% ckan_extends %}
+
+{% set test_lang = request.environ.CKAN_LANG %}
+{% set api_url = 'http://docs.ckan.org/en/{0}/api/'.format(g.ckan_doc_version) %}
+<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="container">
+    {% block footer_content %}
+		<div>
+			<div id="menu-footer-menu-es-bnelab" class="footer-links-menu">
+				<div><b><u>{{ _('OPEN DATA') }}</u></b></div>
+				<div id="menu-item-1">
+					<a href="{{h.url_for('bne.resumen')}}">{{_('Overview')}}</a>
+				</div>
+				<div id="menu-item-2">
+					<a href="{{h.url_for('home.about')}}">{{_('Web information')}}</a>
+				</div>
+				<div id="menu-item-3">
+					<a href="{{h.url_for('bne.api_info')}}">{{ _('CKAN API') }}</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="div-widget-footer">
+			<div  class="widget widget_media_image">
+				<a href="http://www.bne.es/">
+					<img src="{{h.url_for('home.index')+'images/default/logo-bne-optimizado.svg'}}" class="img_bne" alt="logo bne">
+				</a>
+			</div>
+			<div  class="widget widget_media_image">
+				<a href="http://www.mineco.gob.es/">
+					<img src="{{h.url_for('home.index')+'images/default/gob_mc_bne-6.png'}}" class="img_min" alt="logo ministerio">
+				</a>
+			</div>
+			<div  class="widget widget_media_image">
+				<a href="https://planderecuperacion.gob.es/">
+					<img src="{{h.url_for('home.index')+'images/default/prtr2.png'}}" class="img_recu" alt="logo plan recuperacion">
+				</a>
+			</div>
+			<div  class="widget widget_media_image">
+				<a href="https://next-generation-eu.europa.eu/index_es">
+					<img src="{{h.url_for('home.index')+'images/default/ue_next.png'}}" class="img_next" alt="logo next">
+				</a>
+			</div>
+			<div  class="widget widget_media_image">
+				<a href="https://www.red.es/es">
+					<img src="{{h.url_for('home.index')+'images/default/redes_blanco.png'}}" class="img_red" alt="logo red.es">
+				</a>
+			</div>
+		</div>
+
+		<div>
+			<div id="menu-footer-menu-es-bnelab" class="footer-links-menu">
+				<div id="menu-item-825">
+					<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/avisoLegal/">{{_('Legal notice')}}</a>
+				</div>
+				<div id="menu-item-826">
+					<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Protecciondedatos/">{{_('Data protection')}}</a>
+				</div>
+				<div id="menu-item-827">
+					<a href="http://www.bne.es/es/NavegacionRecursiva/Pie/Cookies/">{{_('Cookie policy')}}</a>
+				</div>
+				<div id="menu-item-477">
+					<a title="Contacta con BNElab" href="mailto:bnelab@bne.es">bnelab@bne.es</a>
+				</div>
+			</div>
+		</div>	
+
+<!-- 		<div class="col-lg-12 alineado">	
+			<p class="p-small statement">Financiado por la Unión Europea - NextGenerationEU</p>
+			<img class="img-logo" src="/base/images/logo PRTR.png" alt="alternative">
+			<img class="img-logo" src="/base/images/logo_fundedbyEU.png" alt="alternative">
+		</div> -->
+	{% endblock %}
+	</div>		

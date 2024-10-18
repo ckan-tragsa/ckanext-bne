@@ -2,17 +2,17 @@
 
 # ckanext-bne
 
-**TODO:** Put a description of your extension here:  What does it do? What features does it have? Consider including some screenshots or embedding a video!
+Customization extension for the Open Data portal of the BNE 
+
+### Features
+* Dataset showcase on the home screen
+* BNE api integration
+* Stylized to be similar to the BNE style
+  
+![image](https://github.com/user-attachments/assets/6d67ef52-3d59-4e8b-9233-e65e59b582db)
 
 
 ## Requirements
-
-**TODO:** For example, you might want to mention here which versions of CKAN this
-extension works with.
-
-If your extension works across different versions you can add the following table:
-
-Compatibility with core CKAN versions:
 
 | CKAN version    | Compatible?   |
 | --------------- | ------------- |
@@ -20,20 +20,10 @@ Compatibility with core CKAN versions:
 | 2.7             | not tested    |
 | 2.8             | not tested    |
 | 2.9             | not tested    |
-
-Suggested values:
-
-* "yes"
-* "not tested" - I can't think of a reason why it wouldn't work
-* "not yet" - there is an intention to get it working
-* "no"
+| 2.10            | yes           |
 
 
 ## Installation
-
-**TODO:** Add any additional install steps to the list below.
-   For example installing any non-Python dependencies or adding any required
-   config settings.
 
 To install ckanext-bne:
 
@@ -55,17 +45,31 @@ To install ckanext-bne:
 4. Restart CKAN. For example if you've deployed CKAN with Apache on Ubuntu:
 
      sudo service apache2 reload
-
+   
 
 ## Config settings
 
-None at present
+* bne_base_url: Bne URL
+* bne_api_base_url: Bne API URL
+* bne_api_tables: bne API table mapping, format  `{ <humanized_name> : <api_table>, ... }`
+* bne_api_pill_style: bne API table mapping, format  `{ <humanized_name> : {'icon':'<font_awesome_icon>','color':'<color_hex (optional)>'} ... }`
+* bne_api_entries: number of entries to be shown by default on the API
 
-**TODO:** Document any optional config settings here. For example:
+```python
+# example config on ckanext-bne/ckanext/bne/config.py
 
-	# The minimum number of hours to wait before re-checking a resource
-	# (optional, default: 24).
-	ckanext.bne.some_setting = some_default_value
+bne_base_url = "https://www.bne.es/"
+bne_api_base_url = "http://<url>/api/"
+bne_api_tables = {'Geográfico': 'geo',
+                'Persona': 'per',
+                ...
+                }
+bne_api_pill_style = {'Geográfico': {'icon':'fas fa-atlas'},
+                'Persona': {'icon':'fas fa-user'},
+                ...
+                }
+bne_api_entries = 20
+```
 
 
 ## Developer installation
@@ -120,4 +124,6 @@ If ckanext-bne should be available on PyPI you can follow these steps to publish
 
 ## License
 
-[AGPL](https://www.gnu.org/licenses/agpl-3.0.en.html)
+[AGPL](https://www.gnu.org/licenses/agpl-3.0.en.html) \
+includes code from https://tabulator.info/ - License: https://github.com/olifolkerd/tabulator?tab=MIT-1-ov-file
+
