@@ -335,11 +335,15 @@ msgid "Filters"
 msgstr ""
 
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:18
-msgid "Raw data (api)"
+msgid "Raw data - API BNE"
+msgstr ""
+
+#: ckanext/bne/templates/bne/snippets/bne_entry_card.html:18
+msgid "Limit to {rows} first rows"
 msgstr ""
 
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:20
-msgid "number of entries :"
+msgid "Number of entries :"
 msgstr ""
 
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:24

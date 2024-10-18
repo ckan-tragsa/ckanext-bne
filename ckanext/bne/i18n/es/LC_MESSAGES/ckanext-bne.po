@@ -425,12 +425,16 @@ msgid "Filters"
 msgstr "Filtros"
 
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:18
-msgid "Raw data (api)"
-msgstr "Datos en bruto (api)"
+msgid "Raw data - API BNE"
+msgstr "Datos brutos - API BNE"
+
+#: ckanext/bne/templates/bne/snippets/bne_entry_card.html:18
+msgid "Limit to {rows} first rows"
+msgstr "Limitado a los {rows} primeros registros"
 
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:20
-msgid "number of entries :"
-msgstr "número de entradas :"
+msgid "Number of entries :"
+msgstr "Número de entradas :"
 
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:24
 msgid "Update"
