@@ -11,7 +11,7 @@ import ckan.plugins.toolkit as tk
 import requests as req
 from urllib.parse import urlparse, unquote
 
-import ckanext.bne.config as bne_config
+#import ckanext.bne.config as bne_config
 
 
 log = logging.getLogger(__name__)
