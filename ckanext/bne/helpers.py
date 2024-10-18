@@ -77,7 +77,8 @@ def bne_get_pills():
     out = {}
     for key in pill_config:
         out[key] =  {'table':pill_config[key]['table'],
-                     'icon':pill_config[key]['icon']}
+                     'icon':pill_config[key]['icon'],
+                     'color':pill_config[key]['color']}
     return out
 
 @helper
