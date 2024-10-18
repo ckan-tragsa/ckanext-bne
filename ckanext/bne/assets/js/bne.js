@@ -1,247 +1,199 @@
-const params = new URLSearchParams(window.location.search)
-var page = 0
-var fields, data, table, rows, nentries, apiURLobj
+const params = new URLSearchParams(window.location.search);
+let page = 0;
+let fields, data, table, rows, nentries, apiURLobj;
 
-window.addEventListener("load", function() {
-  /**
-   * event that renders the table on first load
-   */
-  updateVars()
-},false); 
+window.addEventListener('load', () => {
+  // Evento que renderiza la tabla al cargar la página
+  updateVars();
+}, false);
 
-
-function updateVars(){
-  /**
-   * Function that updates variables, sets the offset and calls for the rendering of the nav bar and table
-   * It runs at every table update
-   */
-  if(params.get('table') == null ){
-    params.set('table','geo')
+function updateVars() {
+  // Actualiza variables, establece el offset y renderiza la tabla y la barra de navegación
+  if (!params.has('table')) {
+    params.set('table', 'geo');
   }
-  apiURLobj = new URL(document.getElementById('api-url').href)
-  rows = document.getElementById('bne-rows').value
-  //update table
-  let offset = page * rows
-  let apiUrl = apiURLobj.href + "&rowid=" + rows +"-"+ offset
-  renderTable(apiUrl)
-  bneCreateNav()
+  apiURLobj = new URL(document.getElementById('api-url').href);
+  rows = parseInt(document.getElementById('bne-rows').value, 10);
+
+  // Eliminar 'rowid' si ya existe
+  apiURLobj.searchParams.delete('rowid');
+
+  const offset = page * rows;
+  apiURLobj.searchParams.append('rowid', `${rows}-${offset}`);
+  const apiUrl = apiURLobj.toString();
+
+  renderTable(apiUrl);
+  bneCreateNav();
 }
 
-function setParam(values){
-    /**
-     * changes url parameters and redirects
-     */
-    parameters = {}
-    url = window.location.origin + window.location.pathname + "?"
-    for (const key of params.keys()) {
-      parameters[key] = params.get(key)
-    }
-    for(const [key,value] of Object.entries(values)){
-      parameters[key] = values[key]
-    }
-    for (const [key,value] of Object.entries(parameters)){
-      url += key + "=" +value+'&'
-    }
-    window.location.replace(url)
+function setParam(values) {
+  // Cambia los parámetros de URL y redirige
+  const parameters = {};
+  const url = new URL(window.location.origin + window.location.pathname);
+
+  for (const [key, value] of params.entries()) {
+    parameters[key] = value;
+  }
+  Object.assign(parameters, values);
+
+  for (const [key, value] of Object.entries(parameters)) {
+    url.searchParams.set(key, value);
+  }
+
+  window.location.replace(url.toString());
 }
 
-
-
-
-function formOnClick(){
-  /**
-   * function that updates API table with a given ser of filters
-   * input:
-   */
-  parameters = {}
-  
+function formOnClick() {
+  // Actualiza la tabla de la API con un conjunto dado de filtros
+  const parameters = {};
   page = 0;
-  let url = apiURLobj.origin + '/api/' + params.get('table') + '?'
-  for (const input of document.getElementsByClassName('form-control custom-input')){
-    if(input.value != ""){
-      parameters[input.id] = input.value
+
+  const formInputs = document.querySelectorAll('.form-control.custom-input');
+  formInputs.forEach(input => {
+    if (input.value !== '') {
+      parameters[input.id] = input.value;
     }
-  }
-  for (const [key,value] of Object.entries(parameters)){
-    url += '&' + key + "=" +value
-  }
-  document.getElementById('api-url').href = url
-  let offset = page * rows
-  url += "&rowid=" + rows +"-"+ offset
-  nentries = undefined
-  renderTable(url)
-}
-
-function renderTable(apiUrl){
-  /**
-   * renders api table 
-   */
-  if(!fields){
-    bneApiCallFields(apiUrl)
-  }
-  if(!nentries){
-    bneApiCallNentries(apiUrl+"&count=1")
-  }
-  bneApiCall(apiUrl) 
-  if(table){
-    setTimeout(renderTableAux(),100)
-  }else{
-    initTable()
-  }
-
-}
-
-function renderTableAux(){
-  /**
-   * Function that waits for data to be received and updates table data
-   */
-  if(data != undefined ){
-    table.replaceData(data)
-  }else{
-    setTimeout(renderTableAux,100)
-  }
-}
-
-function initTable(){
-  /**
-   * function that waits for data to be received and initializes tabulator table with api fields
-   */
-  if(data != undefined){
-    let field = ""
-    let columns = []
-    for(var i in fields){
-      field = fields[i].replace(/[_]/g," ")
-      columns.push({
-        title:field,
-        field:fields[i]
-      })
-    }
-    table = new Tabulator("#bne-api-table",{
-      data:data, 
-      columns:columns
-    })
-    document.getElementById('nentries').innerHTML = nentries
-  }else{
-    setTimeout(initTable,100)
-  }
-}
-
-function bneApiCallFields(apiUrl){
-  /**
-   * function that gets the table fields from the API 
-   * input:
-   *  baseURL: String with the API url href
-   */
-  const url = new URL(apiUrl)
-  const apiUrlcropped = url.protocol + '//' + url.host + "/api/fields/" + params.get('table') 
-  fetch(apiUrlcropped)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    fieldsCropped = []
-    for(const i in data['fields']){
-      if('t_' != data['fields'][i].substring(0,2)){
-        fieldsCropped.push(data['fields'][i])
-      }
-    }
-    fields = fieldsCropped
-   })
-  .catch(error => {
-    console.error('Error:', error);
   });
+
+  const baseApiUrl = `${apiURLobj.origin}/api/${params.get('table')}?`;
+  const urlParams = new URLSearchParams(parameters);
+  const apiUrlWithParams = `${baseApiUrl}${urlParams.toString()}`;
+
+  // Actualizaremos 'api-url' eliminando 'rowid' si existe
+  const apiURLWithParamsObj = new URL(apiUrlWithParams);
+  apiURLWithParamsObj.searchParams.delete('rowid');
+
+  const offset = page * rows;
+  apiURLWithParamsObj.searchParams.append('rowid', `${rows}-${offset}`);
+  const apiUrlWithRowid = apiURLWithParamsObj.toString();
+
+  document.getElementById('api-url').href = apiUrlWithRowid;
+  nentries = undefined;
+
+  renderTable(apiUrlWithRowid);
 }
 
-function bneApiCall(apiUrl){
-  /**
-   * Calls api and adds values to a table 
-   * input:
-   *  baseURL: String with the API url href
-   */
-  data = undefined
-  fetch(apiUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    this.data = data['data']
-   })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-}
-
-function bneApiCallNentries(apiUrl){
-  /**
-   * Calls api and adds values to a table 
-   * input:
-   *  baseURL: String with the API url href
-   */
-  data = undefined
-  apiUrl += "&count=1"
-  fetch(apiUrl)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return response.json();
-  })
-  .then(data => {
-    nentries = data['data'][0]['id']
-    document.getElementById('nentries').innerHTML = nentries
-    bneCreateNav()
-   })
-  .catch(error => {
-    console.error('Error:', error);
-  });
-}
-
-function bneCreateNav(){
-  /**
-   * Creates bottom nav bar based on the number of entries and the current page
-   */
-  let nav = document.getElementById('api-nav')
-  let html = ''
-  let pages = Math.ceil(nentries/rows)
-
-  // Renders 
-  if(page < 5){
-    for(var i in Array.from(Array(page+1).keys())){
-      if(i == page ){
-        html += '<div class="current-page">'+page+'</div>'
-      }else{
-        html += '<input type="button" value="'+i+'"onclick="page='+i+'; updateVars()">'
-      }
-    }
-  }else{
-    html += '<input type="button" value="0"onclick="page=0; updateVars()">'
-    html += '<div>...</div>'
-    for(var i in Array.from(Array(3).keys())){
-      j = page+Number(i)-3
-      html += '<input type="button" value="'+j+'"onclick="page='+j+'; updateVars()">'      
-    }
-    html += '<div class="current-page">'+page+'</div>'
+async function renderTable(apiUrl) {
+  // Renderiza la tabla de la API
+  if (!fields) {
+    await bneApiCallFields(apiUrl);
   }
-  if(pages-page < 5){
-    for(var i in Array.from(Array(pages-page).keys())){
-      let j = page + Number(i)
-      if(j != page ){
-        html += '<input type="button" value="'+j+'"onclick="page='+j+'; updateVars()">'
-      }
-    }
-  }else{
-    for(var i in Array.from(Array(3).keys())){
-        let j = Number(i)+page+1
-        html += '<input type="button" value="'+j+'"onclick="page='+j+'; updateVars()">'
-    }
-    html += '<div>...</div>'
-    html += '<input type="button" value="'+(pages-1)+'"onclick="page='+(pages-1)+'; updateVars()">'
+  if (!nentries) {
+    await bneApiCallNentries(apiUrl);
   }
-  nav.innerHTML = html
+  await bneApiCall(apiUrl);
+
+  if (table) {
+    table.replaceData(data);
+  } else {
+    initTable();
+  }
+}
+
+function initTable() {
+  // Inicializa la tabla Tabulator con los campos de la API
+  const columns = fields.map(field => ({
+    title: field.replace(/_/g, ' '),
+    field: field,
+  }));
+
+  table = new Tabulator('#bne-api-table', {
+    data: data,
+    columns: columns,
+  });
+
+  document.getElementById('nentries').textContent = nentries;
+}
+
+async function bneApiCallFields(apiUrl) {
+  // Obtiene los campos de la tabla desde la API
+  const url = new URL(apiUrl);
+  const apiUrlFields = `${url.protocol}//${url.host}/api/fields/${params.get('table')}`;
+
+  try {
+    const response = await fetch(apiUrlFields);
+    if (!response.ok) {
+      throw new Error('Error en la respuesta de la red');
+    }
+    const result = await response.json();
+    fields = result.fields.filter(field => !field.startsWith('t_'));
+  } catch (error) {
+    console.error('Error al obtener los campos:', error);
+  }
+}
+
+async function bneApiCall(apiUrl) {
+  // Llama a la API y actualiza los datos
+  try {
+    const response = await fetch(apiUrl);
+    if (!response.ok) {
+      throw new Error('Error en la respuesta de la red');
+    }
+    const result = await response.json();
+    data = result.data;
+  } catch (error) {
+    console.error('Error al obtener los datos:', error);
+  }
+}
+
+async function bneApiCallNentries(apiUrl) {
+  // Obtiene el número de entradas para la paginación
+  const apiUrlCountObj = new URL(apiUrl);
+  apiUrlCountObj.searchParams.set('count', '1');
+  const apiUrlCount = apiUrlCountObj.toString();
+
+  try {
+    const response = await fetch(apiUrlCount);
+    if (!response.ok) {
+      throw new Error('Error en la respuesta de la red');
+    }
+    const result = await response.json();
+    nentries = result.data[0].id;
+    document.getElementById('nentries').textContent = nentries;
+    bneCreateNav();
+  } catch (error) {
+    console.error('Error al obtener el número de entradas:', error);
+  }
+}
+
+function bneCreateNav() {
+  // Crea la barra de navegación inferior basada en el número de entradas y la página actual
+  const nav = document.getElementById('api-nav');
+  let html = '';
+  const totalPages = Math.ceil(nentries / rows);
+
+  const createPageButton = (pageNumber, isCurrent = false) => {
+    if (isCurrent) {
+      return `<div class="current-page">${pageNumber}</div>`;
+    } else {
+      return `<input type="button" value="${pageNumber}" onclick="page=${pageNumber}; updateVars()">`;
+    }
+  };
+
+  if (page < 5) {
+    for (let i = 0; i <= page; i++) {
+      html += createPageButton(i, i === page);
+    }
+  } else {
+    html += createPageButton(0);
+    html += '<div>...</div>';
+    for (let i = page - 2; i < page; i++) {
+      html += createPageButton(i);
+    }
+    html += createPageButton(page, true);
+  }
+
+  if (totalPages - page < 5) {
+    for (let i = page + 1; i < totalPages; i++) {
+      html += createPageButton(i);
+    }
+  } else {
+    for (let i = page + 1; i <= page + 3; i++) {
+      html += createPageButton(i);
+    }
+    html += '<div>...</div>';
+    html += createPageButton(totalPages - 1);
+  }
+
+  nav.innerHTML = html;
 }
