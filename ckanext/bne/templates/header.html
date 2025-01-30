@@ -21,12 +21,14 @@
 <ul class="nav nav-pills">
   <li><a href="{{h.url_for('dataset.search')}}">{{ _('Open Data Catalog') }}</a></li>
   {% for page in h.bne_get_pages() %}
-  <li><a>{{page.title}}</a></li>
+  <li><a href="{{ h.url_for('pages.pages_index')+'/'+page.title }}">{{page.title}}</a></li>
   {% endfor %}
 
   <li><a href="{{h.url_for('home.about')}}">{{ _('Information') }}</a></li>
 
   <li><a href="{{h.url_for('contact.form')}}">{{ _('Contact') }}</a></li>
+
+  <li><a href="{{h.url_for('pages.blog_index')}}">{{ _('Blog') }}</a></li>
 
 </ul>
 {% endblock %}

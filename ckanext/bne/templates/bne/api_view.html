@@ -1,0 +1,31 @@
+{% extends "page.html" %}
+
+{% block header %}
+{% endblock %}
+
+{% block primary %}
+{% set params = h.bne_get_params_api() %}
+{#{% if 'nentries' not in params %}
+    {% do params.update({'count':'1'}) %}
+    {% set api_response = h.bne_call_api(params) %}
+    {% if api_response and api_response.data and api_response.data|length > 0 %}
+        {% do params.update({'nentries': api_response.data[0].id}) %}
+    {% else %}
+        {% do params.update({'nentries': 0}) %}
+    {% endif %}
+{% endif %}#}
+<div class="primary api-primary" role="main">
+    {% snippet 'bne/snippets/bne_entry_card.html', params=params, nentries=params.nentries %}
+</div>
+{% endblock %}
+
+{% block secondary %}
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  {% include 'bne/snippets/bne_asset_api.html' %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

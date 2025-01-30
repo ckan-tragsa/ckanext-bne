@@ -1,0 +1,15 @@
+
+{% set truncate = truncate or 750 %}
+{% set truncate_title = truncate_title or 80 %}
+
+<div class="row fondoblog">
+	<div class="blog-media-grid" >
+        {% for page in h.bne_get_blog() %}
+        <div class="blog-entry">
+            <h3><a href="{{ h.url_for('pages.blog_show', page=page.name) }}">{{page.title}}</a></h3>
+            <a>{{ h.markdown_extract( page.content, extract_length=(truncate)) }}</a>
+
+        </div>
+        {% endfor %}
+	</div>
+</div>
