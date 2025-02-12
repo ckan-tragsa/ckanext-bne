@@ -483,12 +483,12 @@ msgstr "Esconder filtros"
 
 #: ckanext/bne/templates/contact/form.html:16
 msgid "Contact us"
-msgstr "Contáctenos"
+msgstr "Contacto"
 
 # | msgid "Contact us"
 #: ckanext/bne/templates/contact/success.html:18
 msgid "Contact Us"
-msgstr "Contáctenos"
+msgstr "Contacto"
 
 #: ckanext/bne/templates/contact/snippets/form.html:17
 msgid "Questions? Comments? We are always glad to hear from you!"
@@ -504,7 +504,7 @@ msgstr "Email"
 
 #: ckanext/bne/templates/contact/snippets/form.html:29
 msgid "Your Request"
-msgstr "Petición y consultas"
+msgstr "Tu petición"
 
 #: ckanext/bne/templates/contact/snippets/form.html:31
 msgid "What do you have to tell us?"
