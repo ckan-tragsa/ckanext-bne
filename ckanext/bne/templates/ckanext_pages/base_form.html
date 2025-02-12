@@ -1,0 +1,10 @@
+{% ckan_extends %}
+
+
+{% block scripts %}
+ <!--
+  CKEditor needs to be loaded here instead of using webassets
+  or it won't load properly when setting debug=False
+  -->
+  <script src="{{ h.url_for('home.index') + '/vendor/ckeditor/ckeditor.js' }}"></script>
+{% endblock %}

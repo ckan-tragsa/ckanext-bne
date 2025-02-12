@@ -302,7 +302,37 @@ body, h1, h2, h3, h4, h5, h6, a  {
 
     }
 }
-    
+ 
+.fondoblog{
+    .blog-media-grid{
+        border: 1px solid var(--bne-border);
+        border-radius: var(--bne-border-radius);
+        padding: 0;
+        .blog-entry{
+            overflow: hidden;
+            padding: 1rem;
+            h3{
+                border-bottom: dashed;
+                border-width: 1px
+            }
+            height: 10rem;
+            a{
+                display: inline-block;
+                max-height: 5rem;
+                overflow: hidden;
+            }
+        }
+        .blog-entry:nth-child(even){
+            background: var(--bne-grey);
+        }
+    }
+}
+
+
+.blog-entry{
+    overflow: hidden;
+}
+
 .bne-pills {
     display: flex;
     align-items: center;
