@@ -93,6 +93,20 @@ def bne_get_pages():
     #log.warning(page_list)
     return page_list
 
+@helper
+def bne_get_blog():
+    """
+    Retrieves blog entries
+
+    Returns:
+        dict: blog
+    """
+
+    page_list = tk.get_action("ckanext_pages_list")(data_dict={'page_type':'blog'})
+    #log.warning(page_list)
+    return page_list[:5]
+
+
 def _bne_humanize_field_name(field_name):
     """
     Converts a field name to a more human-readable format.

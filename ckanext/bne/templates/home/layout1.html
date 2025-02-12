@@ -2,10 +2,6 @@
 
 {% block search %}
 {{ super() }}
-<div class="sct-about-h3-container">
-    <h3 class="sct-about-h3">{{ _('BNE API') }}</h3>
-</div>
-    {% snippet 'bne/snippets/bne_api_pills.html' %}
 {% endblock %}
 
 {% block about_themes %}
@@ -14,5 +10,14 @@
     <h3 class="sct-about-h3"> {{ _('Featured') }} </h3>
 </div>
     {% snippet 'home/snippets/great_view.html' %}
+
+<div class="sct-about-h3-container">
+    <h3 class="sct-about-h3"> {{ _('Blog') }} </h3>
+</div>
+    {% snippet 'home/snippets/great_blog.html' %}
+<div class="sct-about-h3-container">
+    <h3 class="sct-about-h3">{{ _('BNE API') }}</h3>
+</div>
+    {% snippet 'bne/snippets/bne_api_pills.html' %}
 
 {% endblock %}
