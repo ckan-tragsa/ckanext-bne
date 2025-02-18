@@ -596,3 +596,7 @@ body, h1, h2, h3, h4, h5, h6, a  {
     animation: 0.75s linear infinite spinner-border;
     color: #003164;
 }
+/* Fix broken blog title. */
+.row.page-list-item.dataset-item{
+    display: block;
+}
