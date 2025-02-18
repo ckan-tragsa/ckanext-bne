@@ -599,4 +599,7 @@ body, h1, h2, h3, h4, h5, h6, a  {
 /* Fix broken blog title. */
 .row.page-list-item.dataset-item{
     display: block;
+    .col-md-10{
+        flex-direction: column;
+    }
 }
