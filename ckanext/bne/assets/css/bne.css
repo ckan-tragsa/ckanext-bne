@@ -603,3 +603,17 @@ body, h1, h2, h3, h4, h5, h6, a  {
         flex-direction: column;
     }
 }
+
+.iframe-container {
+    width:100vw;
+    padding: 0;
+    #myIframe{
+        width:100vw;
+        height:150vh;
+        overflow:hidden;
+    }
+}
+
+.container:has(.iframe-container){
+    margin: 0;
+}
