@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-01-27 11:27+0100\n"
+"POT-Creation-Date: 2025-02-20 11:23+0100\n"
 "PO-Revision-Date: 2024-10-14 11:43+0200\n"
 "Last-Translator: \n"
 "Language: es\n"
@@ -70,9 +70,9 @@ msgid "Contact"
 msgstr "Contacto"
 
 #: ckanext/bne/templates/header.html:31
-#: ckanext/bne/templates/home/layout1.html:15
+#: ckanext/bne/templates/home/layout1.html:20
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: ckanext/bne/templates/bne/api_info.html:6
 msgid "API"
@@ -438,6 +438,14 @@ msgstr ""
 msgid "Please contact the BNElab team here"
 msgstr "Contacta por favor con el equipo BNElab aquí"
 
+#: ckanext/bne/templates/bne/snippets/bne_api_link.html:6
+msgid "web version"
+msgstr "versión web"
+
+#: ckanext/bne/templates/bne/snippets/bne_api_link.html:12
+msgid "raw data"
+msgstr "datos brutos"
+
 #: ckanext/bne/templates/bne/snippets/bne_entry_card.html:6
 #: ckanext/bne/templates/bne/snippets/bne_form.html:5
 msgid "Filters"
@@ -535,9 +543,11 @@ msgstr "Enviar"
 msgid "Featured"
 msgstr "Destacados"
 
-#: ckanext/bne/templates/home/layout1.html:19
-msgid "BNE API"
-msgstr "API BNE"
+# | msgid "What is open data?"
+#: ckanext/bne/templates/home/layout1.html:15
+#, fuzzy
+msgid "Explore and use open data"
+msgstr "Explora y usa datos abiertos"
 
 #~ msgid "Popular dataset"
 #~ msgstr "Conjunto de datos popular"
@@ -570,4 +580,7 @@ msgstr "API BNE"
 
 #~ msgid "Updated on "
 #~ msgstr "Actualizado el día "
+
+#~ msgid "BNE API"
+#~ msgstr "API BNE"
 

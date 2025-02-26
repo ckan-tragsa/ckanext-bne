@@ -12,12 +12,13 @@
     {% snippet 'home/snippets/great_view.html' %}
 
 <div class="sct-about-h3-container">
+    <h3 class="sct-about-h3"> {{ _('Explore and use open data') }} </h3>
+</div>
+    {% snippet 'bne/snippets/bne_api_pills.html' %}
+
+<div class="sct-about-h3-container">
     <h3 class="sct-about-h3"> {{ _('Blog') }} </h3>
 </div>
     {% snippet 'home/snippets/great_blog.html' %}
-<div class="sct-about-h3-container">
-    <h3 class="sct-about-h3">{{ _('BNE API') }}</h3>
-</div>
-    {% snippet 'bne/snippets/bne_api_pills.html' %}
 
 {% endblock %}

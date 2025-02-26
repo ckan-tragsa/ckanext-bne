@@ -336,11 +336,12 @@ body, h1, h2, h3, h4, h5, h6, a  {
 .bne-pills {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     text-decoration: none;
     color: var(--bne-grey);
     cursor: pointer;
+    margin-bottom: 40px;
 
     .pill-card {
         display: flex;
