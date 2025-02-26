@@ -545,7 +545,6 @@ msgstr "Destacados"
 
 # | msgid "What is open data?"
 #: ckanext/bne/templates/home/layout1.html:15
-#, fuzzy
 msgid "Explore and use open data"
 msgstr "Explora y usa datos abiertos"
 
