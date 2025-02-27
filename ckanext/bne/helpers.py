@@ -161,9 +161,9 @@ def generate_api_url(params, fields=False, rows=None, page=None):
     params2.pop('nentries', None)
     
     if fields:
-        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url') + "fields/" + params2.pop('table') + "?"
+        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url') + "/api/"  + "fields/" + params2.pop('table') + "?"
     else:
-        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url') + params2.pop('table') + "?"
+        call_url = p.toolkit.config.get('ckanext.bne.bne_api_base_url') + "/api/"  + params2.pop('table') + "?"
     
     for key in params2:
         call_url += key + "=" + params2[key] + '&'

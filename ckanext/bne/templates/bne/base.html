@@ -11,19 +11,13 @@
         {% do params.update({'nentries': 0}) %}
     {% endif %}
 {% endif %}#}
-{% snippet "bne/snippets/bne_api_pills.html" %}
-<aside class="secondary col-sm-3 api-secondary" >
-    {% snippet "bne/snippets/bne_form.html", params=params, nentries=params.nentries %}
-</aside>
-<div class="primary col-sm-9 col-xs-12 api-primary" role="main">
-    {% snippet 'bne/snippets/bne_entry_card.html', params=params, nentries=params.nentries %}
+
+<!-- Iframe incrustado -->
+{% set parameters = h.bne_get_params_api() %} 
+<div class="iframe-container">
+    <iframe id="myIframe" src="{{h.bne_get_bne_api_base_url()}}/consulta/?dataset={{parameters.table}}&view=human" width="100%" height="600" frameborder="0" allowfullscreen scrolling="no" onload="hideElements()"></iframe>
 </div>
 {% endblock %}
 
 {% block secondary %}
-{% endblock %}
-
-{% block styles %}
-  {{ super() }}
-  {% include 'bne/snippets/bne_asset_api.html' %}
 {% endblock %}

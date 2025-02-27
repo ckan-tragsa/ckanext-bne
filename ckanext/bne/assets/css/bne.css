@@ -336,11 +336,12 @@ body, h1, h2, h3, h4, h5, h6, a  {
 .bne-pills {
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
     text-decoration: none;
     color: var(--bne-grey);
     cursor: pointer;
+    margin-bottom: 40px;
 
     .pill-card {
         display: flex;
@@ -602,4 +603,18 @@ body, h1, h2, h3, h4, h5, h6, a  {
     .col-md-10{
         flex-direction: column;
     }
+}
+
+.iframe-container {
+    width:100vw;
+    padding: 0;
+    #myIframe{
+        width:100vw;
+        height:150vh;
+        overflow:hidden;
+    }
+}
+
+.container:has(.iframe-container){
+    margin: 0;
 }
