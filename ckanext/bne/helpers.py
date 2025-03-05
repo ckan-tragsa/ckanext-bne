@@ -64,6 +64,14 @@ def get_number_entries_api():
         int: number of entries that should appear in api frontend
     '''
     return p.toolkit.config.get('ckanext.bne.bne_api_entries')
+
+@helper
+def get_googleanalytics():
+    '''
+    Returns:
+        string: google analytics ID
+    '''
+    return p.toolkit.config.get('ckanext.bne.bne_googleanalytics')
     
 @helper 
 def bne_get_pills():
