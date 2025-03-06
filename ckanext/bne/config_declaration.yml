@@ -35,3 +35,9 @@ groups:
           Google analytics ID 
         required: false 
         
+      - key: ckanext.bne.bne_placeholder
+        default: 'ej. autores'
+        description: |
+          Google analytics ID 
+        required: false 
+        

@@ -54,7 +54,7 @@ msgstr "Grupos"
 
 #: ckanext/bne/templates/header.html:22
 msgid "Open Data Catalog"
-msgstr "Catalogo de Datos Abiertos"
+msgstr "Catálogo de Datos Abiertos"
 
 # ckanext/bne/templates/header.html
 #: ckanext/bne/templates/header.html:27

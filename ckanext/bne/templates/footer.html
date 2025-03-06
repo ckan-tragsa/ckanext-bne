@@ -9,13 +9,13 @@
 			<div id="menu-footer-menu-es-bnelab" class="footer-links-menu">
 				<div><b><u>{{ _('OPEN DATA') }}</u></b></div>
 				<div id="menu-item-1">
-					<a href="{{h.url_for('bne.resumen')}}">{{_('Overview')}}</a>
+					<a href="{{h.url_for('pages.pages_index')+ '/que-son'}} ">{{_('Overview')}}</a>
 				</div>
 				<div id="menu-item-2">
-					<a href="{{h.url_for('home.about')}}">{{_('Web information')}}</a>
+					<a href="{{h.url_for('pages.pages_index') + '/info-plataforma-ckan'}}">{{_('Web information')}}</a>
 				</div>
 				<div id="menu-item-3">
-					<a href="{{h.url_for('bne.api_info')}}">{{ _('CKAN API') }}</a>
+					<a href="{{h.url_for('pages.pages_index') + '/api'}} ">{{ _('CKAN API') }}</a>
 				</div>
 			</div>
 		</div>
