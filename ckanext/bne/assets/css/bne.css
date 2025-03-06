@@ -27,6 +27,10 @@ body, h1, h2, h3, h4, h5, h6, a  {
 
 /*header*/
 
+.masthead .navbar .logo img {
+    max-height: 100px;
+  }
+
 .masthead{
     margin-top: var(--bne-margin-top);
     background-color: var(--bne-dark-blue) ;
