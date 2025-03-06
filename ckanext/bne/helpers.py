@@ -72,6 +72,14 @@ def get_googleanalytics():
         string: google analytics ID
     '''
     return p.toolkit.config.get('ckanext.bne.bne_googleanalytics')
+
+@helper
+def get_bne_placeholder():
+    '''
+    Returns:
+        string: search bar placeholder
+    '''
+    return p.toolkit.config.get('ckanext.bne.bne_placeholder')
     
 @helper 
 def bne_get_pills():
